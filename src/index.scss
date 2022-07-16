@@ -1,0 +1,20 @@
+@use "./sass/base" as *;
+
+body {
+    font-family: $ff-poppins;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #cdcdcd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $dark-faded;
+}

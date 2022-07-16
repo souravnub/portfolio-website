@@ -1,0 +1,12 @@
+@use "../../../sass/base" as *;
+
+.desktop-mockup-section {
+    padding-inline: 20vw;
+    padding-block: $padding-lg;
+
+    transform: translateX(calc((100vw - $max-container-width) / -2));
+
+    position: relative;
+
+    background-color: rgba(black, 0.05);
+}

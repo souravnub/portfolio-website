@@ -1,0 +1,135 @@
+@use "../../../sass/base" as *;
+
+.single-work-section-footer-hover-btn {
+    position: fixed;
+    z-index: 9;
+
+    top: 0;
+    left: 0;
+
+    width: 7rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: $fs-sm;
+    text-transform: capitalize;
+
+    background-color: $primary-blue;
+
+    pointer-events: none;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    transition: transform 500ms ease;
+}
+
+.single-work-section-footer {
+    padding: $padding-extra-lg;
+    background-color: $dark-faded;
+    color: white;
+
+    min-width: 99.7vw;
+    transform: translateX(calc(((100vw - $max-container-width) / -2)));
+
+    display: flex;
+    flex-direction: column;
+    gap: $gap-extra-lg;
+    align-items: center;
+    justify-content: center;
+
+    &__all-works-link {
+        position: relative;
+
+        padding-inline: $padding-md;
+        padding-block: $padding-sm;
+
+        overflow: hidden;
+
+        border-radius: 100vh;
+
+        transition: color 100ms linear;
+        transform: translateY(2rem);
+        opacity: 0;
+        font-size: 1.1rem;
+
+        &:after {
+            content: "";
+            width: 0.5rem;
+            aspect-ratio: 1;
+            background-color: white;
+
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            z-index: -1;
+
+            border-radius: 50%;
+
+            transition: transform 700ms ease;
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                transform: scale(25);
+            }
+            color: black;
+        }
+    }
+
+    &__link-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-sm;
+        align-items: center;
+
+        padding-inline: 25%;
+
+        border-bottom: 1px solid $faded-gray;
+
+        overflow: hidden;
+
+        & span:nth-child(1) {
+            font-size: $fs-sm;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        &__work-heading {
+            font-size: calc($fs-lg + 2.4rem);
+            font-weight: 500;
+            margin-bottom: 6rem;
+
+            transition: opacity 350ms ease;
+        }
+
+        img {
+            position: absolute;
+            bottom: 0;
+
+            transform: translateY(60%);
+
+            max-width: 60%;
+            transition: transform 400ms ease-in-out;
+            // display: none;
+        }
+
+        &:hover {
+            img {
+                transform: translateY(35%);
+            }
+
+            .single-work-section-footer__link-container__work-heading {
+                opacity: 0.5;
+            }
+        }
+    }
+}

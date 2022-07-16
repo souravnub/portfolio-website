@@ -1,0 +1,30 @@
+@use "../../../sass/base" as *;
+.main-tablet-container {
+    padding: 10vw;
+    width: 99.45vw;
+    transform: translateX((calc(100vw - $max-container-width) / -2));
+
+    display: flex;
+    justify-content: center;
+}
+.tablet-mockup-container {
+    position: relative;
+    aspect-ratio: 1.3 / 1;
+    width: 57vw;
+
+    &__mockup-img {
+        position: absolute;
+        inset: 0;
+        z-index: 9;
+    }
+    &__design-asset {
+        position: absolute;
+        inset: 0;
+        height: 79.5%;
+        width: 86%;
+        top: 9.4%;
+        left: 7%;
+        object-fit: cover;
+        z-index: -1;
+    }
+}

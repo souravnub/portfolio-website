@@ -1,0 +1,40 @@
+@use "../../../sass/base" as *;
+
+.single-work-info-header {
+    padding-block: $padding-extra-lg;
+
+    &__brand-name {
+        font-size: calc($fs-lg + 0.8rem);
+        font-weight: 500;
+        margin-bottom: $gap-md;
+        display: block;
+    }
+
+    &__info-container {
+        display: flex;
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+
+            text-transform: capitalize;
+            font-size: $fs-sm;
+            font-weight: 500;
+
+            .head {
+                font-size: 0.7rem;
+                font-weight: 500;
+                opacity: 0.5;
+            }
+
+            padding-inline: $padding-lg;
+            padding-block: $padding-extra-sm;
+            &:not(:first-child) {
+                border-left: 1.3px solid rgba(black, 0.2);
+            }
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+@use "../../../sass/base" as *;
+
+.device-mockup-container {
+    position: relative;
+
+    aspect-ratio: 1 / 0.765;
+
+    &__mockup-img {
+        position: absolute;
+        inset: 0;
+        z-index: 9;
+    }
+    &__design-asset {
+        position: absolute;
+        inset: 0;
+
+        top: 2.2%;
+        left: 2.2%;
+
+        width: 95.5%;
+        height: 72%;
+
+        object-fit: cover;
+    }
+}

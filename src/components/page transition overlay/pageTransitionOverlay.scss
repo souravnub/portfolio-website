@@ -1,0 +1,28 @@
+@use "../../sass/base" as *;
+
+.page-transition-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: $dark-faded;
+
+    z-index: 99999;
+
+    min-height: 100vh;
+
+    color: white;
+
+    display: grid;
+    place-items: center;
+
+    font-size: calc($fs-lg + 0.7rem);
+    font-family: $ff-roboto;
+    text-transform: capitalize;
+
+    transform: translateY(-100%);
+
+    &__text-container {
+        display: flex;
+        gap: calc($gap-sm + 0.3rem);
+        align-items: center;
+    }
+}
