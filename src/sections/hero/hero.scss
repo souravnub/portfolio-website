@@ -1,0 +1,108 @@
+@use "../../sass/base" as *;
+
+.main-hero-section {
+    &__bg-img-container {
+        background-color: $img-bg;
+        overflow: hidden;
+
+        &__bg-img {
+            height: 100vh;
+            aspect-ratio: 1 / 1.047;
+            margin-inline: auto;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+        }
+    }
+
+    position: relative;
+
+    &__location-info {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        padding-block: $padding-sm;
+        padding-inline: $padding-md;
+
+        background-color: $dark-faded;
+        border-top-right-radius: 100vh;
+        border-bottom-right-radius: 100vh;
+        color: white;
+
+        display: flex;
+        gap: $gap-md;
+        align-items: center;
+
+        @media screen and (max-width: 34.25rem) {
+            font-size: $fs-sm !important;
+            padding-block: $padding-extra-sm;
+            padding-inline: $padding-sm;
+
+            flex-direction: row-reverse;
+
+            border-radius: 0;
+            border-top-left-radius: 100vh;
+            border-bottom-left-radius: 100vh;
+
+            left: unset;
+            top: unset;
+            bottom: 0;
+            right: 0;
+        }
+
+        &__info-container {
+            display: flex;
+            flex-direction: column;
+
+            &__icon {
+                background-color: $img-bg;
+
+                width: 3.5rem;
+                height: 3.5rem;
+                padding: $padding-sm;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &__work-info {
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        display: flex;
+        flex-direction: column;
+        gap: $gap-sm;
+
+        color: white;
+
+        //550px
+        @media screen and (max-width: 34.25rem) {
+            top: unset;
+            bottom: 0;
+            left: $padding-sm;
+            white-space: nowrap;
+        }
+
+        &__icon {
+            font-size: 1.4rem;
+            transform: rotate(40deg);
+        }
+
+        &__info-container {
+            display: flex;
+            flex-direction: column;
+            font-size: $fs-lg;
+            text-transform: capitalize;
+            font-weight: 500;
+            font-family: $ff-open-sans;
+
+            @media screen and (max-width: 34.25rem) {
+                font-size: $fs-md;
+            }
+        }
+    }
+}

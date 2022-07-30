@@ -1,0 +1,34 @@
+@use "../../sass/base" as *;
+
+.animated-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: black;
+
+    z-index: 9999999;
+
+    min-height: 100vh;
+
+    color: white;
+
+    display: grid;
+    place-items: center;
+
+    &__text {
+        display: flex;
+        align-items: center;
+        gap: $gap-sm;
+
+        white-space: nowrap;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+
+        opacity: 0;
+
+        font-size: 2.6rem;
+
+        transform: translate(-50%, -50%);
+    }
+}

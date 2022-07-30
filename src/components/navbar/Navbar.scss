@@ -1,0 +1,83 @@
+@use "../../sass/base" as *;
+
+.top-navigation {
+    --text-color: "white";
+
+    position: absolute;
+    top: 0;
+    inset-inline: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--text-color);
+
+    z-index: 99;
+
+    padding-inline: $padding-lg;
+    padding-block: $padding-md;
+
+    .logo {
+        display: flex;
+
+        align-items: center;
+        gap: $gap-extra-sm;
+        font-size: $fs-sm;
+
+        .icon {
+            transition: transform 500ms ease;
+            font-size: $fs-md;
+        }
+
+        &:hover {
+            .icon {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    &__links-container {
+        display: flex;
+        gap: $gap-lg;
+
+        @media screen and (max-width: 26.5rem) {
+            display: none;
+        }
+
+        a {
+            font-size: 0.89rem;
+            text-transform: capitalize;
+
+            position: relative;
+            &::after {
+                content: "";
+                display: block;
+                width: $fs-extra-sm;
+                aspect-ratio: 1;
+
+                background-color: var(--text-color);
+                border-radius: 50%;
+
+                position: absolute;
+                bottom: -100%;
+                left: 50%;
+                transform: scale(0) translateX(-50%);
+
+                transition: transform 250ms ease-in-out;
+            }
+
+            &:hover {
+                &::after {
+                    transform: scale(1);
+                }
+            }
+
+            &.active {
+                &::after {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+}

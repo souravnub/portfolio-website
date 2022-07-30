@@ -1,0 +1,33 @@
+@use "../../sass/base" as *;
+
+.projects-showcase-section {
+    overflow: hidden;
+    margin-top: $padding-extra-lg;
+
+    &__img-flex-container {
+        width: 110%;
+        display: flex;
+        gap: $gap-lg;
+
+        & > * {
+            flex: 1;
+        }
+
+        &__project-container {
+            padding-inline: max(0.5rem, 2vw);
+            padding-block: max(1rem, 3vw);
+            video {
+                width: 100%;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &__img-flex-container:not(:first-child) {
+        margin-top: $gap-lg;
+    }
+}

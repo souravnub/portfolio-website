@@ -1,0 +1,48 @@
+@use "../../sass/base" as *;
+
+.page-transition-overlay {
+    $curve-height: var(--curve-height);
+
+    position: fixed;
+    inset: 0;
+    background-color: black;
+
+    z-index: 999999;
+
+    min-height: 100vh;
+
+    color: white;
+
+    display: grid;
+    place-items: center;
+
+    font-size: calc($fs-lg + 0.7rem);
+    font-family: $ff-roboto;
+    text-transform: capitalize;
+
+    transform: translateY(calc((100% + $curve-height)));
+
+    &__text-container {
+        display: flex;
+        gap: calc($gap-sm + 0.3rem);
+        align-items: center;
+    }
+
+    &__top-curve,
+    &__bottom-curve {
+        position: absolute;
+        top: calc(($curve-height) / -1.2);
+        width: 110%;
+        background-color: inherit;
+        height: $curve-height;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+    &__bottom-curve {
+        bottom: calc(($curve-height) / -1.2);
+        top: unset;
+        border-radius: 0;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+}

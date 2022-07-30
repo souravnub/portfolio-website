@@ -1,0 +1,19 @@
+// about page
+@use "variables" as *;
+
+@keyframes move-up-down {
+    0% {
+        transform: translateY(-10%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes shadow-animation {
+    0% {
+        transform: scale(0.8) rotateX(80deg);
+    }
+    100% {
+        transform: scale(1) rotateX(80deg);
+    }
+}

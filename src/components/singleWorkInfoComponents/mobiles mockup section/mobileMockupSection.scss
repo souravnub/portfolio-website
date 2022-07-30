@@ -1,0 +1,14 @@
+@use "../../../sass/base" as *;
+
+.main-mobile-mockup-section {
+    padding-top: min(30vh, 10rem);
+    padding-bottom: min(30vh, 5rem);
+    display: flex;
+    justify-content: space-evenly;
+
+    @media screen and (max-width: 31.25rem) {
+        flex-direction: column;
+        align-items: center;
+        gap: $gap-extra-lg;
+    }
+}

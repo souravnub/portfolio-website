@@ -1,0 +1,31 @@
+$faded-gray: rgb(83, 83, 83);
+$img-bg: #999d9e;
+$dark-faded: rgb(28, 28, 28);
+$primary-blue: #3a51d3;
+
+$ff-poppins: "Poppins", sans-serif;
+$ff-roboto: "Roboto", sans-serif;
+$ff-open-sans: "Open Sans", sans-serif;
+
+$padding-extra-sm: 0.45rem;
+$padding-sm: 0.85rem;
+$padding-md: 1.4rem;
+$padding-lg: 2rem;
+$padding-extra-lg: 6rem;
+
+$padding-section: max(45vh, 13rem);
+
+$gap-extra-sm: 0.3rem;
+$gap-sm: 0.5rem;
+$gap-md: 1rem;
+$gap-lg: 1.5rem;
+$gap-extra-lg: 5rem;
+
+$fs-extra-sm: 0.5rem;
+$fs-sm: clamp(0.78rem, 1vw + 0.3rem, 0.9rem);
+$fs-md: 1.3rem;
+$fs-lg: clamp(1.4rem, 1vw + 1rem, 1.8rem);
+
+$max-container-width: 90vw;
+$max-container-width-mobile: 95vw;
+$section-inline-padding: 8vw;

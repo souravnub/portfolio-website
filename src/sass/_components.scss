@@ -1,0 +1,69 @@
+@use "./variables" as *;
+
+.styled-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: max-content;
+
+    padding: 4rem;
+
+    background-color: rgb(23, 23, 23);
+
+    overflow: hidden;
+
+    text-transform: capitalize;
+    position: relative;
+
+    isolation: isolate;
+
+    color: white;
+
+    font-family: $ff-roboto;
+    .btn-overlay {
+        position: absolute;
+        inset: 0;
+
+        border-radius: inherit;
+        background-color: #4a5fd6;
+
+        transform: translateY(100%);
+        z-index: -1;
+    }
+}
+
+.width-container {
+    max-width: $max-container-width;
+    margin-inline: auto;
+}
+.padding-container {
+    padding-inline: $section-inline-padding;
+    // 550px
+    @media screen and (max-width: 34.37rem) {
+        padding-inline: 0;
+    }
+}
+
+.rounded-div-container {
+    position: absolute;
+    top: 0;
+    inset-inline: 0;
+    overflow: hidden;
+
+    height: 70px;
+
+    // default bg color
+    z-index: 99;
+
+    .rounded-div {
+        background-color: white;
+        height: 720%;
+        position: absolute;
+        bottom: 0;
+        inset-inline: -40vw;
+        border-radius: 50%;
+
+        transform: translateY(-10px);
+    }
+}

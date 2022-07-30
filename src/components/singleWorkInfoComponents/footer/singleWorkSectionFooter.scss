@@ -1,0 +1,181 @@
+@use "../../../sass/base" as *;
+
+.single-work-section-footer-hover-btn {
+    position: fixed;
+    z-index: 9;
+
+    width: 7rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: $fs-sm;
+    text-transform: capitalize;
+
+    background-color: $primary-blue;
+
+    pointer-events: none;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    transition: transform 500ms ease;
+}
+
+.single-work-section-main-container {
+    position: relative;
+    margin-top: $padding-extra-lg;
+    width: 100%;
+
+    //500px
+    @media screen and (max-width: 31.25rem) {
+        margin-top: $padding-md;
+    }
+}
+
+.single-work-section-footer {
+    overflow: hidden;
+    padding-inline: $padding-lg;
+    padding-block: calc($padding-lg + 1rem);
+    background-color: $dark-faded;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: $gap-extra-lg;
+    align-items: center;
+    justify-content: center;
+
+    // 800px
+    @media screen and (max-width: 50rem) {
+        padding-block: max(calc($padding-lg + 1rem), 20vw);
+    }
+    // 1450px
+    @media screen and (min-width: 90.6rem) {
+        padding-block: calc($padding-lg + 10vw);
+    }
+
+    &__all-works-link {
+        position: relative;
+
+        padding-inline: $padding-md;
+        padding-block: $padding-sm;
+
+        overflow: hidden;
+
+        border-radius: 100vh;
+
+        transition: color 100ms linear;
+        transform: translateY(-4rem);
+        opacity: 0;
+        font-size: 1.1rem;
+
+        &:after {
+            content: "";
+            width: 0.5rem;
+            aspect-ratio: 1;
+            background-color: white;
+
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            z-index: -1;
+
+            border-radius: 50%;
+
+            transition: transform 700ms ease;
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                transform: scale(25);
+            }
+            color: black;
+        }
+    }
+
+    &__link-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-sm;
+        align-items: center;
+
+        padding-top: 8rem;
+
+        padding-inline: 15%;
+
+        border-bottom: 1px solid $faded-gray;
+
+        overflow: hidden;
+
+        // for gsap
+        transform: translateY(-9rem);
+
+        // 500px
+        @media screen and (max-width: 31.25rem) {
+            padding-inline: 0;
+            width: 100%;
+        }
+
+        & span:nth-child(1) {
+            font-size: $fs-sm;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        &__work-heading {
+            font-size: calc($fs-lg + 2.4rem);
+            font-weight: 500;
+            margin-bottom: 7rem;
+            text-align: center;
+            line-height: 0.9em;
+
+            transition: opacity 350ms ease;
+
+            @media screen and (max-width: 31.25rem) {
+                margin-bottom: 9rem;
+                font-size: calc($fs-lg + 1rem);
+            }
+        }
+
+        img {
+            position: absolute;
+            bottom: 0;
+            max-width: 60%;
+
+            // 700px
+            @media screen and (min-width: 50rem) {
+                // do only for desktops
+                transform: translateY(60%);
+                transition: transform 400ms ease-in-out;
+            }
+            @media screen and (max-width: 50rem) {
+                padding-inline: 5%;
+            }
+            @media screen and (max-width: 31rem) {
+                padding-inline: unset;
+            }
+        }
+
+        //700px
+        @media screen and (min-width: 50rem) {
+            // do this only for desktops
+            &:hover {
+                img {
+                    transform: translateY(35%);
+                }
+
+                .single-work-section-footer__link-container__work-heading {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}

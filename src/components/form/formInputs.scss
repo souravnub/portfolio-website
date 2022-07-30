@@ -1,0 +1,117 @@
+@use "../../sass/base" as *;
+
+.form-input-container {
+    position: relative;
+
+    .form-input {
+        padding: $padding-extra-sm;
+        // background-color: lighten($dark-faded, 1.8);
+        background-color: #f7f7f7;
+        color: black;
+        font-family: $ff-poppins;
+        width: 100%;
+        height: 100%;
+
+        &:focus-visible,
+        &:not(:placeholder-shown) {
+            & ~ .form-input-bottom-line {
+                transform-origin: left;
+                transform: scaleX(1);
+            }
+            & ~ label {
+                transform: translateY(-210%);
+                left: 0;
+                @media screen and (min-width: 50rem) {
+                    text-align: right;
+                    transform: translateX(-140%) translateY(-50%);
+                }
+            }
+        }
+    }
+
+    label {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: $padding-extra-sm;
+        font-size: max($fs-sm - 0.13rem, 0.67rem);
+        font-weight: 400;
+        text-transform: capitalize;
+
+        transition: transform 300ms ease, left 300ms ease;
+
+        @media screen and (min-width: 50rem) {
+            width: 3rem;
+        }
+    }
+
+    label[data-type="textarea"] {
+        top: $padding-sm;
+    }
+
+    .form-input-bottom-line {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+
+        background-color: black;
+        height: 1px;
+
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 250ms ease;
+    }
+
+    .error-container {
+        &__error-symbol {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+
+            font-size: $fs-md;
+            color: #ff4a4a;
+
+            display: flex;
+            align-items: center;
+
+            &[data-child="textarea-child"] {
+                // top: $padding-extra-sm;
+                top: -($padding-extra-sm);
+                transform: translateY(50%);
+            }
+        }
+
+        &__error-info-container {
+            position: absolute;
+            right: 0;
+            top: -2.5em;
+            font-size: calc($fs-sm - 0.1rem);
+            font-weight: 400;
+            background-color: rgb(225, 225, 225);
+            padding: 0.3em 0.6em;
+
+            border-radius: 0.1em;
+        }
+    }
+}
+
+.error-container__error-info-container__tooltip {
+    $tooltip-dimensions: 1rem;
+
+    content: "";
+
+    position: absolute;
+    bottom: -0.5rem;
+    right: 6%;
+
+    background-color: rgb(225, 225, 225);
+    width: $tooltip-dimensions;
+    aspect-ratio: 0.9 / 0.45;
+
+    clip-path: polygon(100% 0, 0 0, 50% 100%);
+    transform: translateY(-120%) translateX(-50%);
+
+    pointer-events: none;
+}

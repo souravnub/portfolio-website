@@ -1,0 +1,31 @@
+.mobile-mockup-container {
+    position: relative;
+
+    width: 20%;
+    aspect-ratio: 1 / 2;
+
+    //500px
+    @media screen and (max-width: 31.25rem) {
+        width: 60%;
+    }
+
+    &__mobile-mockup-img {
+        position: absolute;
+        inset: 0;
+        z-index: 9;
+    }
+    &__design-asset {
+        position: absolute;
+        inset: 0;
+
+        width: 90%;
+        height: 97%;
+        left: 5%;
+
+        display: block;
+        top: 2.2%;
+    }
+    video {
+        object-fit: cover;
+    }
+}

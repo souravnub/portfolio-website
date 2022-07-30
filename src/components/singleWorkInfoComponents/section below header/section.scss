@@ -1,0 +1,54 @@
+@use "../../../sass/base" as *;
+
+.single-work-info-live-link-section {
+    margin-block: $padding-lg;
+    margin-bottom: $padding-extra-lg;
+
+    padding-inline: $padding-lg;
+
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    transform-style: preserve-3d;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &__brand-name-img {
+        margin-inline: auto;
+        display: block;
+
+        margin-top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &__link {
+        position: absolute;
+        top: -5%;
+        transform: translateY(-40%);
+        right: 5%;
+
+        .icon {
+            position: absolute;
+
+            top: 45%;
+            right: 1.8rem;
+            font-size: 0.9rem;
+
+            color: white;
+            transform: rotate(-40deg);
+            pointer-events: none;
+
+            transition: opacity 300ms ease, transform 450ms ease;
+        }
+
+        &:hover {
+            .icon {
+                transform: rotate(-40deg) translateX(10%);
+            }
+        }
+    }
+}

@@ -1,0 +1,185 @@
+@use "../../sass/base" as *;
+
+.main-absolute-work-container {
+    $container-height: 15rem;
+    $padding-block: 3rem;
+    pointer-events: none;
+    z-index: 999;
+
+    position: fixed;
+
+    transform: scale(0);
+    transition: transform 150ms ease;
+
+    background-color: green;
+
+    overflow: hidden;
+
+    display: flex;
+
+    height: calc($container-height + $padding-block);
+    flex-direction: column;
+
+    &__img-container {
+        height: 100%;
+        width: calc($container-height * 2);
+        padding: $padding-md;
+        padding-block: $padding-block;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.main-absolute-work-btn {
+    pointer-events: none;
+    position: fixed;
+
+    z-index: 9999;
+
+    transform: scale(0) translate(-50%, -50%);
+
+    padding: $padding-sm;
+    border-radius: 50%;
+    background-color: $primary-blue;
+    color: white;
+    font-weight: 300;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+}
+
+.main-works-page {
+    .main-heading {
+        padding-block: $padding-extra-lg;
+
+        &__heading-content {
+            position: relative;
+            font-size: calc($fs-lg + 1rem);
+            font-weight: 500;
+            padding-inline-start: $padding-lg;
+            padding-inline-end: 35vw;
+
+            //905px
+            @media screen and (max-width: 56.5rem) {
+                padding-inline-end: 10vw;
+            }
+
+            //500px
+            @media screen and (max-width: 31.25rem) {
+                padding-inline: 0;
+            }
+
+            &__heading-text-container {
+                overflow: hidden;
+                .heading-text {
+                    display: block;
+                    word-spacing: 0.1em;
+                    transform: translateY(150%);
+                }
+            }
+
+            .icon {
+                position: absolute;
+                transform: rotate(10deg);
+                transform-origin: center;
+                opacity: 0;
+
+                &:nth-child(1) {
+                    top: -20%;
+                    left: -1%;
+                }
+                &:nth-child(2) {
+                    bottom: -3rem;
+                    left: 8rem;
+                }
+                &:nth-child(3) {
+                    bottom: 0.4rem;
+                    right: 10vw;
+                }
+                &:nth-child(4) {
+                    top: -25%;
+                    right: 30vw;
+                }
+            }
+        }
+    }
+
+    &__content-table {
+        border-collapse: collapse;
+        width: 100%;
+
+        thead {
+            tr {
+                text-align: left;
+            }
+        }
+
+        td {
+            font-family: $ff-roboto;
+        }
+
+        th,
+        td {
+            padding-block: $padding-lg;
+        }
+
+        td:nth-child(1),
+        th:nth-child(1) {
+            padding-inline-start: $padding-extra-lg;
+        }
+        td:last-child,
+        th:last-child {
+            padding-inline-end: calc($padding-extra-lg / 2);
+        }
+
+        // 750px
+        @media screen and (max-width: 46.8rem) {
+            td:nth-child(1),
+            th:nth-child(1) {
+                padding-inline-start: $padding-lg;
+            }
+            td:last-child,
+            th:last-child {
+                padding-inline-end: calc($padding-lg / 2);
+            }
+        }
+        th {
+            font-size: calc($fs-extra-sm + 0.2rem);
+
+            opacity: 0.5;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        tbody {
+            tr {
+                $border-height: 0.08em;
+                padding-block: 5rem;
+                border-top: $border-height solid rgba(black, 0.1);
+                border-bottom: $border-height solid rgba(black, 0.1);
+                cursor: pointer;
+
+                transition: transform 250ms ease, opacity 250ms ease;
+
+                &:hover {
+                    opacity: 0.5;
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        &__card {
+            .work-heading {
+                font-size: calc($fs-lg - 0.2rem);
+            }
+            td {
+                font-size: $fs-sm;
+                text-transform: capitalize;
+                font-weight: 400;
+            }
+        }
+    }
+}

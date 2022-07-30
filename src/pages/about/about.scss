@@ -1,0 +1,285 @@
+@use "../../sass/base" as *;
+
+.padding-inline {
+    padding-inline: 8%;
+}
+
+.main-about-page-container {
+    &__header-container {
+        padding-top: calc($padding-extra-lg + 2rem);
+
+        &__main-heading {
+            font-size: calc($fs-lg + 0.8rem);
+            font-weight: 500;
+            font-family: $ff-open-sans;
+        }
+
+        &__interaction-container {
+            position: relative;
+            margin-block: $padding-md;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10%;
+
+            &::after {
+                content: "";
+
+                position: absolute;
+                top: 50%;
+                inset-inline: 0;
+                transform: translateY(-50%);
+
+                background-color: $faded-gray;
+                height: 0.5px;
+                opacity: 0.5;
+
+                z-index: -1;
+            }
+
+            .about-page-interaction {
+                width: 9rem;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                // background-color: rgb(255, 120, 18);
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 1000ms ease;
+
+                $alien-animation-duration: 1800ms;
+                img {
+                    width: 40%;
+                    filter: invert(0.05);
+                    animation: move-up-down $alien-animation-duration
+                        ease-in-out infinite alternate;
+                    pointer-events: none;
+                }
+
+                .interaction-shadow {
+                    width: 40%;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    background-color: rgba(black, 0.2);
+                    transform: rotateX(80deg);
+
+                    margin-top: -10%;
+                    animation: shadow-animation calc($alien-animation-duration)
+                        ease-in-out infinite alternate;
+                }
+            }
+        }
+    }
+
+    &__main-about-section {
+        display: flex;
+        justify-content: center;
+        gap: $gap-lg;
+
+        //700px
+        @media screen and (max-width: 43.75rem) {
+            flex-direction: column;
+        }
+
+        &__info {
+            position: relative;
+
+            font-size: $fs-sm;
+            flex: 1;
+            padding-top: $padding-lg;
+
+            display: flex;
+            flex-direction: column;
+            gap: $gap-sm;
+
+            .arrow-icon {
+                position: absolute;
+                top: 30px;
+                left: -10%;
+                font-size: 1.4rem;
+
+                opacity: 0.8;
+            }
+
+            .always-exploring-text {
+                opacity: 0.7;
+                font-size: calc($fs-sm - 0.1rem);
+                font-family: $ff-roboto;
+            }
+        }
+        &__img-container {
+            flex: 1;
+            z-index: 1;
+        }
+    }
+
+    &__reasons-container {
+        padding-block: $padding-extra-lg;
+
+        &__main-heading {
+            font-size: calc($fs-lg + 0.4rem);
+            font-weight: 500;
+            font-family: $ff-open-sans;
+        }
+
+        &__reasons-cards-container {
+            display: flex;
+            gap: $gap-extra-lg;
+            margin-block: calc($padding-lg + 0.8rem);
+
+            @media screen and (max-width: 43.75rem) {
+                flex-direction: column;
+                gap: calc($gap-lg + 0.8rem);
+            }
+
+            &__card {
+                flex: 1;
+                & > span:nth-child(1) {
+                    display: block;
+                    font-family: $ff-open-sans;
+                    font-size: $fs-sm;
+                    font-weight: 600;
+                    opacity: 0.3;
+                }
+                .line {
+                    display: block;
+                    height: 1px;
+                    background: $faded-gray;
+                    opacity: 0.3;
+                    margin-block: $padding-lg;
+
+                    transform-origin: left;
+                    //for gsap
+                    transform: scaleX(0);
+
+                    @media screen and (max-width: 43.75rem) {
+                        margin-block: $padding-sm;
+                    }
+                }
+                .heading {
+                    display: block;
+                    font-size: $fs-md;
+                    margin-bottom: $padding-sm;
+                    font-weight: 400;
+                }
+                p {
+                    font-size: $fs-sm;
+                }
+            }
+        }
+    }
+    &__about-me-info {
+        &__main-heading {
+            font-size: $fs-lg;
+            position: relative;
+            margin-bottom: calc($padding-lg + 1.5rem);
+            display: block;
+
+            .absolute-illustration {
+                position: absolute;
+                top: -0.5rem;
+                left: 0;
+
+                display: flex;
+                align-items: center;
+                gap: 0.2rem;
+
+                &__line {
+                    width: 2rem;
+                    background-color: $faded-gray;
+                    border-radius: 100vh;
+                    height: 2px;
+                }
+                &__dot {
+                    width: 0.15rem;
+                    border-radius: 50%;
+                    aspect-ratio: 1;
+                    background-color: $faded-gray;
+                }
+            }
+        }
+
+        &__cards-container {
+            display: flex;
+            gap: $gap-extra-lg;
+
+            //900px
+            @media screen and (max-width: 56.25rem) {
+                flex-direction: column;
+                padding-left: 1rem;
+            }
+
+            &__card {
+                position: relative;
+
+                .line {
+                    position: absolute;
+                    left: -0.8rem;
+                    inset-block: -1rem;
+                    background-color: rgba(black, 0.2);
+                    width: 1px;
+
+                    // for gsap
+                    transform: scaleY(0);
+
+                    .circle {
+                        position: absolute;
+                        top: 0;
+
+                        background-color: $faded-gray;
+
+                        aspect-ratio: 1;
+                        border-radius: 50%;
+
+                        width: 5px;
+
+                        transform: translateX(-40%) translateY(40%);
+
+                        // for gsap
+                        opacity: 0;
+                    }
+                }
+
+                .card-head {
+                    font-size: $fs-sm;
+                    font-weight: 500;
+                    text-transform: capitalize;
+
+                    //for gsap
+                    transform: translateY(0.5rem);
+                    opacity: 0;
+                }
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: $fs-sm;
+                    margin-top: 0.7rem;
+
+                    & > span {
+                        position: relative;
+                        margin-block: 0.1rem;
+
+                        //for gsap
+                        transform: translateX(0.9rem);
+                        opacity: 0;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: -15.2px;
+                            border-radius: 100vh;
+                            transform: translateY(-50%);
+                            width: 6.4px;
+                            height: 1px;
+                            background-color: black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
