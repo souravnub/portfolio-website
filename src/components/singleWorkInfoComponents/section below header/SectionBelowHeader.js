@@ -5,7 +5,6 @@ import "./section.scss";
 import { useEffect } from "react";
 import { Parallax } from "react-parallax";
 import gsap from "gsap";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const SectionBelowHeader = ({

@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillExclamationCircle } from "react-icons/ai";
 import "./formInputs.scss";
 

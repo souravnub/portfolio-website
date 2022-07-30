@@ -1,6 +1,4 @@
 import React from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
 import desktopMockup from "../../../assets/mockups/desktop.png";
 import "./desktopMockup.scss";
 
