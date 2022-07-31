@@ -9,6 +9,8 @@ const ProjectsSection = () => {
 
     let { deviceType } = useSelector((store) => store.deviceType);
 
+    let hideOnWidth = 500;
+
     useEffect(() => {
         let setArrLength = () => {
             if (window.innerWidth > 1150) {
@@ -34,6 +36,9 @@ const ProjectsSection = () => {
     }, [projectsArr]);
 
     let setSlidingAnimations = () => {
+        if (window.innerWidth < hideOnWidth && deviceType === "mobile") {
+            return;
+        }
         let timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: ".projects-showcase-section",
@@ -65,7 +70,7 @@ const ProjectsSection = () => {
             );
     };
 
-    if (window.innerWidth < 500 && deviceType === "mobile") {
+    if (window.innerWidth < hideOnWidth && deviceType === "mobile") {
         return;
     }
 
