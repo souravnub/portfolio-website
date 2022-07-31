@@ -27,6 +27,13 @@ const ProjectsSection = () => {
     }, []);
 
     useEffect(() => {
+        setSlidingAnimations();
+    }, []);
+    useEffect(() => {
+        setSlidingAnimations();
+    }, [projectsArr]);
+
+    let setSlidingAnimations = () => {
         let timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: ".projects-showcase-section",
@@ -56,7 +63,7 @@ const ProjectsSection = () => {
                 },
                 "-=2"
             );
-    }, [projectsArr]);
+    };
 
     if (window.innerWidth < 500 && deviceType === "mobile") {
         return;
