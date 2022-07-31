@@ -5,17 +5,28 @@ import { Link } from "react-router-dom";
 import StyledBtn from "../../components/extras/StyledBtn";
 import "./contact.scss";
 import AnimatedTopCurve from "../../components/AnimatedTopCurve";
-import { useRef } from "react";
 import myImg from "../../assets/images/my images/my-portfolio-img-1.jpg";
 const Contact = () => {
-    let textRef = useRef();
-
     let phone = "+91 7710346567";
-    let email = "s6hr6h4u3@gamil.com";
+    let email = "s6hr6h4u3@gmail.com";
     let [isEmailCopied, setIsEmailCopied] = useState(false);
     let [isPhoneCopied, setIsPhoneCopied] = useState(false);
 
+    let handleCopyToClipboard = (ele) => {
+        if (ele === "phone") {
+            setIsPhoneCopied(true);
+            setIsEmailCopied(false);
+            return navigator.clipboard.writeText(phone);
+        }
+        if (ele === "email") {
+            setIsEmailCopied(true);
+            setIsPhoneCopied(false);
+            return navigator.clipboard.writeText(email);
+        }
+    };
+
     useEffect(() => {
+        // animation that brings container downwards
         let contactContentTimeline = gsap.timeline({
             scrollTrigger: {
                 trigger: ".main-contact-container",
@@ -43,47 +54,43 @@ const Contact = () => {
                 "-=.5"
             );
 
-        let textContainers = document.querySelectorAll(
-            ".main-contact-container__info-container__contact-btn-container .copy-to-clipboard .text-container"
+        // animations for text
+
+        let textContainer = document.querySelectorAll(
+            ".main-contact-container__info-container__contact-btn-container .text-container"
         );
-        textContainers.forEach((container) => {
-            container.addEventListener("mouseover", () => {
-                gsap.to(container.querySelectorAll("span"), {
-                    y: "-100%",
-                    duration: 0.2,
-                    ease: "power1",
-                });
+        textContainer.forEach((container) => {
+            let timeline = gsap.timeline({
+                defaults: { duration: 0.8, ease: "power4" },
             });
-            container.addEventListener("mouseout", () => {
-                gsap.to(container.querySelectorAll("span"), {
-                    y: "0",
-                    duration: 0.2,
-                    ease: "power1",
-                });
+            let text = container.querySelector(
+                ".text-container__main-text-container__main-text"
+            );
+            let bottomLine = container.querySelector(
+                ".text-container__main-text-container__bottom-line"
+            );
+            let absText = container.querySelector(".abs-text");
+
+            absText.style.left = `${text.getBoundingClientRect().width + 20}px`;
+
+            text.addEventListener("mouseover", () => {
+                timeline
+                    .to(bottomLine, { scaleX: 1 })
+                    .to(absText, { opacity: 0.6, x: 0 }, "-=.3");
             });
-            container.style.height =
-                textRef.current.getBoundingClientRect().height + "px";
+            text.addEventListener("mouseout", () => {
+                timeline
+                    .to(absText, { opacity: 0, x: "-1.4rem" })
+                    .to(bottomLine, { scaleX: 0.14 }, "-=.3");
+            });
         });
     }, []);
-
-    let handleCopyToClipboard = (ele) => {
-        if (ele === "phone") {
-            setIsPhoneCopied(true);
-            setIsEmailCopied(false);
-            return navigator.clipboard.writeText(phone);
-        }
-        if (ele === "email") {
-            setIsEmailCopied(true);
-            setIsPhoneCopied(false);
-            return navigator.clipboard.writeText(email);
-        }
-    };
     return (
         <>
             <div className="main-contact-container">
                 <AnimatedTopCurve />
                 <div className="main-contact-container__info-container width-container">
-                    <div>
+                    <div className="main-contact-container__info-container__head">
                         <div>
                             <img src={myImg} alt="" className="my-img" />
                             <span>Wanna hire</span>
@@ -106,8 +113,14 @@ const Contact = () => {
                             className="copy-to-clipboard"
                             onClick={() => handleCopyToClipboard("email")}>
                             <div className="text-container">
-                                <span ref={textRef}>{email}</span>
-                                <span>
+                                <div className="text-container__main-text-container">
+                                    <span className="text-container__main-text-container__main-text">
+                                        {email}
+                                    </span>
+                                    <div className="text-container__main-text-container__bottom-line"></div>
+                                </div>
+
+                                <span className="abs-text">
                                     {isEmailCopied
                                         ? "copied !"
                                         : "copy to clipboard"}
@@ -118,8 +131,13 @@ const Contact = () => {
                             className="copy-to-clipboard"
                             onClick={() => handleCopyToClipboard("phone")}>
                             <div className="text-container">
-                                <span>{phone}</span>
-                                <span>
+                                <div className="text-container__main-text-container">
+                                    <span className="text-container__main-text-container__main-text">
+                                        {phone}
+                                    </span>
+                                    <div className="text-container__main-text-container__bottom-line"></div>
+                                </div>
+                                <span className="abs-text">
                                     {isPhoneCopied
                                         ? "copied !"
                                         : "copy to clipboard"}

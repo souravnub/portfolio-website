@@ -11,7 +11,7 @@ const TabletMockup = ({ asset, showBg = false }) => {
             className="main-tablet-container"
             style={{ backgroundColor: showBg ? "rgba(0,0,0,.06)" : "inherit" }}>
             <div className="tablet-mockup-container">
-                <div class="tablet-mockup-container__loader-container">
+                <div className="tablet-mockup-container__loader-container">
                     <PuffLoader color="#000000" size={80} />
                 </div>
                 <img

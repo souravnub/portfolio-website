@@ -144,7 +144,7 @@ const About = () => {
 
     return (
         <div className="main-about-page-container route-transition-container">
-            <div className="main-about-page-container__header-container padding-inline width-container">
+            <div className="main-about-page-container__header-container padding-inline">
                 <span className="main-about-page-container__header-container__main-heading">
                     Wow, a whole page about me !
                 </span>

@@ -6,7 +6,7 @@ import "./desktopMockup.scss";
 const DesktopMockup = ({ asset }) => {
     return (
         <div className="device-mockup-container">
-            <div class="device-mockup-container__loader-container">
+            <div className="device-mockup-container__loader-container">
                 <PuffLoader color="#000000" size={100} />
             </div>
             <img

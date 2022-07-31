@@ -13,7 +13,7 @@ $padding-md: 1.4rem;
 $padding-lg: 2rem;
 $padding-extra-lg: 6rem;
 
-$padding-section: max(45vh, 13rem);
+$padding-section: min(max(45vh, 13rem), 20rem);
 
 $gap-extra-sm: 0.3rem;
 $gap-sm: 0.5rem;

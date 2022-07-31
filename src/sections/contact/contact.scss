@@ -7,8 +7,8 @@
 
     position: relative;
 
-    padding-bottom: calc($padding-section - 4rem);
-    padding-top: calc(max(45vh, 13rem) - 4rem);
+    padding-bottom: calc($padding-section - 10rem);
+    padding-top: calc($padding-section - 4rem);
 
     overflow: hidden;
 
@@ -39,11 +39,11 @@
             gap: $gap-extra-lg;
         }
 
-        & > div:nth-child(1) {
+        &__head {
             display: flex;
             flex-direction: column;
 
-            font-size: calc($fs-lg + 1.3rem);
+            font-size: clamp($fs-lg + 0.8rem, 5vw, $fs-lg + 1.3rem);
             font-weight: 500;
 
             & > div {
@@ -73,10 +73,12 @@
                 transform: translateY(-50%) translateX(-9rem);
             }
         }
+
         &__contact-btn-container {
             margin-top: 3rem;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             gap: 2rem;
 
             button {
@@ -84,20 +86,40 @@
                 color: white;
 
                 .text-container {
-                    overflow: hidden;
                     display: flex;
-                    flex-direction: column;
+                    gap: $gap-lg;
+                    align-items: flex-end;
+                    position: relative;
 
-                    span {
-                        font-weight: 500;
-                        font-family: $ff-open-sans;
-                        transition: transform 200ms ease-in-out;
+                    &__main-text-container {
+                        display: flex;
+                        gap: $gap-extra-sm;
+                        flex-direction: column;
+
+                        &__bottom-line {
+                            background-color: rgba(white, 0.3);
+                            width: 100%;
+                            height: 1.5px;
+                            border-radius: 100vh;
+
+                            // for gsap
+                            transform: scaleX(0.14);
+                            transform-origin: left;
+                        }
                     }
 
-                    span:nth-child(2) {
+                    & > span {
                         font-weight: 400;
                         font-size: 0.9rem;
                         text-transform: capitalize;
+
+                        position: absolute;
+                        pointer-events: none;
+
+                        width: max-content;
+                        // for gsap
+                        transform: translateX(-1.4rem);
+                        opacity: 0;
                     }
                 }
             }

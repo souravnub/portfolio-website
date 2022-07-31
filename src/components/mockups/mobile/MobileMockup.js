@@ -6,7 +6,7 @@ import "./mobileMockup.scss";
 const MobileMockup = ({ asset }) => {
     return (
         <div className="mobile-mockup-container">
-            <div class="mobile-mockup-container__loader-container">
+            <div className="mobile-mockup-container__loader-container">
                 <PuffLoader color="#000000" size={80} />
             </div>
             <img
