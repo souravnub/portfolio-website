@@ -1,11 +1,14 @@
 import React from "react";
 import mobileMockupImg from "../../../assets/mockups/phone.png";
-
+import { PuffLoader } from "react-spinners";
 import "./mobileMockup.scss";
 
 const MobileMockup = ({ asset }) => {
     return (
         <div className="mobile-mockup-container">
+            <div class="mobile-mockup-container__loader-container">
+                <PuffLoader color="#000000" size={80} />
+            </div>
             <img
                 src={mobileMockupImg}
                 alt="mockup"

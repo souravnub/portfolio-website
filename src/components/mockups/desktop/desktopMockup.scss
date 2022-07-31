@@ -22,4 +22,17 @@
 
         object-fit: cover;
     }
+    &__loader-container {
+        position: absolute;
+        inset: 0;
+
+        top: 2.2%;
+        left: 2.2%;
+
+        width: 95.5%;
+        height: 72%;
+
+        display: grid;
+        place-items: center;
+    }
 }

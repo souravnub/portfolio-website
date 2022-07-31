@@ -1,19 +1,25 @@
 import React from "react";
-import { useRef } from "react";
+import { PuffLoader } from "react-spinners";
 import tabletMockupImg from "../../../assets/mockups/ipad.png";
 import "./tabletMockup.scss";
 
 // aspect ratio of video ->  1.37 / 1
 
 const TabletMockup = ({ asset, showBg = false }) => {
-    let mockImgRef = useRef();
-    let mainMockContainerRef = useRef();
-
     return (
         <div
             className="main-tablet-container"
             style={{ backgroundColor: showBg ? "rgba(0,0,0,.06)" : "inherit" }}>
-            <div className="tablet-mockup-container" ref={mainMockContainerRef}>
+            <div className="tablet-mockup-container">
+                <div class="tablet-mockup-container__loader-container">
+                    <PuffLoader color="#000000" size={80} />
+                </div>
+                <img
+                    src={tabletMockupImg}
+                    alt="mockup"
+                    className="tablet-mockup-container__mockup-img"
+                />
+
                 {asset.type === "img" && (
                     <img
                         src={asset.source}
@@ -29,12 +35,6 @@ const TabletMockup = ({ asset, showBg = false }) => {
                         className="tablet-mockup-container__design-asset"
                     />
                 )}
-                <img
-                    src={tabletMockupImg}
-                    alt="mockup"
-                    className="tablet-mockup-container__mockup-img"
-                    ref={mockImgRef}
-                />
             </div>
         </div>
     );
