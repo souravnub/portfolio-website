@@ -71,6 +71,12 @@ const AnimatedOverlay = () => {
                 display: "none",
             });
         }
+
+        window.screen.orientation.addEventListener("change", function (e) {
+            overlayRef.current.style.transform = `translateY(-${
+                overlayRef.current.getBoundingClientRect().height + curveHeight
+            }px)`;
+        });
     }, []);
 
     return (
