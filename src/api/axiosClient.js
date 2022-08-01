@@ -6,7 +6,7 @@ let axiosClient = axios.create({
             ? "http://localhost:5000"
             : process.env.REACT_APP_BACKEND_URL,
     headers: { "Content-type": "application/json" },
-    timeout: 1500,
+    timeout: 4000,
 });
 
 export default axiosClient;

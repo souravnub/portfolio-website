@@ -31,4 +31,16 @@
 
         transform: translate(-50%, -50%);
     }
+
+    &__bottom-curve {
+        $curve-height: var(--curve-height);
+        position: absolute;
+
+        width: 110%;
+        background-color: inherit;
+        height: $curve-height;
+        bottom: calc(($curve-height) / -1.2);
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
 }

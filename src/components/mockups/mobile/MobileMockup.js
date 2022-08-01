@@ -25,6 +25,7 @@ const MobileMockup = ({ asset }) => {
                 <video
                     autoPlay
                     muted
+                    loop
                     src={asset.source}
                     className="mobile-mockup-container__design-asset"
                 />
