@@ -30,6 +30,7 @@ export const allWorks = [
         info: "frontend & backend development",
         img: getImgURL("smart-img"),
         yearOfProduction: 2022,
+        techUsed: ["react", "node", "express", "mongoDB", "scss", "jwt"],
 
         brandingColor: "cadetblue",
         brandImg:
@@ -51,6 +52,7 @@ export const allWorks = [
         yearOfProduction: 2021,
         info: "interaction & development",
         img: getImgURL("news-flash-img"),
+        techUsed: ["html", "scss", "js"],
 
         brandingColor: "#d7d7d7",
         brandImg:
@@ -72,6 +74,7 @@ export const allWorks = [
         info: "interaction & development",
         img: getImgURL("t-movies-img"),
         yearOfProduction: 2022,
+        techUsed: ["react", "TMDB api", "scss"],
 
         brandingColor: "#ffa901",
         brandImg:
@@ -94,6 +97,7 @@ export const allWorks = [
         info: "interaction & development",
         yearOfProduction: 2022,
         img: getImgURL("home-verse-img"),
+        techUsed: ["html", "scss", "js"],
 
         brandingColor: "rgb(255, 103, 77) ",
         brandImg:
@@ -113,6 +117,9 @@ export const allWorks = [
         info: "interaction & development",
         yearOfProduction: 2022,
         img: getImgURL("sneakers-website-img"),
+        techUsed: ["react", "scss"],
+
+        techUsed: ["react", "scss"],
 
         brandingColor: "orange",
         brandImg: getImgURL("sneakers-website-brand-img"),
@@ -134,6 +141,7 @@ export const allWorks = [
         info: "interaction & development",
         yearOfProduction: 2020,
         img: getImgURL("microsoft-clone-img"),
+        techUsed: ["html", "css", "js"],
 
         brandingColor: "gray",
         brandImg:
@@ -151,6 +159,7 @@ export const allWorks = [
         info: "interaction & development",
         yearOfProduction: 2022,
         img: getImgURL("gym-website-img"),
+        techUsed: ["html", "css", "js"],
 
         brandingColor: "#ae1717",
         brandImg:

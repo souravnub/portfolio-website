@@ -15,6 +15,8 @@ const MobileMockupSection = ({ data }) => {
     let [shouldShowSection, setShouldShowSection] = useState(false);
 
     let { windowWidth } = useSelector((store) => store.windowWidth);
+    // CONVERSION_WIDTH  is the width at which the mobileMockupSection will change its state.. from three mobile mockups to one mobile mockup
+    let CONVERSION_WIDTH = 500;
 
     useEffect(() => {
         if (mobileImg1 || mobileVideo || mobileImg2) {
@@ -23,7 +25,7 @@ const MobileMockupSection = ({ data }) => {
     }, []);
 
     useEffect(() => {
-        if (shouldShowSection) {
+        if (shouldShowSection && windowWidth > CONVERSION_WIDTH) {
             let allMockups = document.querySelectorAll(
                 ".main-mobile-mockup-section > *"
             );
@@ -40,6 +42,24 @@ const MobileMockupSection = ({ data }) => {
                     scrub: 1.5,
                 },
             });
+        } else if (shouldShowSection && windowWidth < CONVERSION_WIDTH) {
+            // this time only one mockup will be there
+            let mockup = document.querySelector(
+                ".main-mobile-mockup-section > *"
+            );
+            gsap.fromTo(
+                mockup,
+                { y: "5rem" },
+                {
+                    y: 0,
+                    scrollTrigger: {
+                        trigger: mainContainerRef.current,
+                        start: "top 100%",
+                        end: "bottom 100%",
+                        scrub: 1.5,
+                    },
+                }
+            );
         }
     }, [mainContainerRef, shouldShowSection]);
 
@@ -49,13 +69,13 @@ const MobileMockupSection = ({ data }) => {
 
     return (
         <div className="main-mobile-mockup-section" ref={mainContainerRef}>
-            {mobileImg1 && windowWidth > 500 && (
+            {mobileImg1 && windowWidth > CONVERSION_WIDTH && (
                 <MobileMockup asset={{ type: "img", source: mobileImg1 }} />
             )}
             {mobileVideo && (
                 <MobileMockup asset={{ type: "video", source: mobileVideo }} />
             )}
-            {mobileImg2 && windowWidth > 500 && (
+            {mobileImg2 && windowWidth > CONVERSION_WIDTH && (
                 <MobileMockup asset={{ type: "img", source: mobileImg2 }} />
             )}
         </div>

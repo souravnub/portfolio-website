@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux/es/exports";
 import { setNavTextColor } from "../../features/navigation/navSlice";
@@ -18,9 +18,6 @@ const SingleWorkPage = () => {
     let dispatch = useDispatch();
     let mainWorkPageContainerRef = useRef();
 
-    // to check if main brandImg had loaded... then will set the animations on the footer because without doing so the start and end points of the animations for the footer were not displaying at the correct position
-    let [hasBrandImgLoaded, setHasBrandImgLoaded] = useState(false);
-
     let {
         id,
         heading,
@@ -34,6 +31,7 @@ const SingleWorkPage = () => {
         mobileImg2,
         mobileVideo,
         tabletVideo,
+        techUsed,
     } = allWorks.filter((work) => work.inSiteLinkText === currentLink)[0];
 
     useEffect(() => {
@@ -52,12 +50,12 @@ const SingleWorkPage = () => {
                 siteName={heading}
                 servicesInfo={info}
                 yearOfProduction={yearOfProduction}
+                techUsed={techUsed}
             />
             <SectionBelowHeader
                 brandImg={brandImg}
                 liveSiteLink={link}
                 brandNameImg={brandNameImg}
-                setHasBrandImgLoaded={setHasBrandImgLoaded}
             />
             {video && (
                 <DesktopMockupSection data={{ type: "video", source: video }} />
@@ -74,7 +72,6 @@ const SingleWorkPage = () => {
                 />
             )}
             <SingleWorkSectionFooter
-                hasBrandImgLoaded={hasBrandImgLoaded}
                 nextWorkIndex={id + 1 > allWorks.length ? 1 : id + 1}
             />
         </div>

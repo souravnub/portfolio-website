@@ -77,6 +77,8 @@ const AnimatedOverlay = () => {
                 overlayRef.current.getBoundingClientRect().height + curveHeight
             }px)`;
         });
+
+        // no need the remove the above eventListner as the animatedOverlay will never be unmounted ...so no issues
     }, []);
 
     return (

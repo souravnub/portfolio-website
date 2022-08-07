@@ -1,7 +1,12 @@
 import React from "react";
 import "./header.scss";
 
-const SingleWorkInfoHeader = ({ siteName, servicesInfo, yearOfProduction }) => {
+const SingleWorkInfoHeader = ({
+    siteName,
+    servicesInfo,
+    yearOfProduction,
+    techUsed,
+}) => {
     return (
         <div className="single-work-info-header width-container">
             <span className="single-work-info-header__brand-name">
@@ -18,6 +23,20 @@ const SingleWorkInfoHeader = ({ siteName, servicesInfo, yearOfProduction }) => {
                     <span className="head">year</span>
                     <span>{yearOfProduction}</span>
                 </div>
+
+                {techUsed && (
+                    <div className="single-work-info-header__more-info">
+                        <span className="head">tech used</span>
+                        <span>
+                            {techUsed.map((tech, idx) => {
+                                if (idx !== techUsed.length - 1) {
+                                    return `${tech}, `;
+                                }
+                                return tech;
+                            })}
+                        </span>
+                    </div>
+                )}
             </div>
         </div>
     );

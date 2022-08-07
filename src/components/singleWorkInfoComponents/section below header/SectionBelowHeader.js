@@ -7,12 +7,7 @@ import { Parallax } from "react-parallax";
 import gsap from "gsap";
 import { useSelector } from "react-redux";
 
-const SectionBelowHeader = ({
-    liveSiteLink,
-    brandImg,
-    brandNameImg,
-    setHasBrandImgLoaded,
-}) => {
+const SectionBelowHeader = ({ liveSiteLink, brandImg, brandNameImg }) => {
     let mainContainerRef = useRef();
     let liveLinkRef = useRef();
 
@@ -64,14 +59,13 @@ const SectionBelowHeader = ({
                     blur={{ min: -1, max: 2 }}
                     style={{
                         width: "100%",
-                        height: "100%",
+                        height: sectionHeight + "vh",
                         paddingInline: "5rem",
                     }}>
                     <img
                         src={brandNameImg}
                         alt="brand name"
                         className="single-work-info-live-link-section__brand-name-img"
-                        onLoad={() => setHasBrandImgLoaded(true)}
                         style={{
                             marginTop: sectionHeight / 2 + "vh",
                             transform: "translateY(-50%)",

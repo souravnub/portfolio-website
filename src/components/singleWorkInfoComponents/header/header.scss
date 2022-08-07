@@ -13,6 +13,12 @@
     &__info-container {
         display: flex;
 
+        //500px
+        @media screen and (max-width: 31.25rem) {
+            flex-direction: column;
+            gap: $gap-sm;
+        }
+
         & > div {
             display: flex;
             flex-direction: column;
@@ -29,11 +35,19 @@
 
             padding-inline: $padding-lg;
             padding-block: $padding-extra-sm;
+
             &:not(:first-child) {
                 border-left: 1.3px solid rgba(black, 0.2);
             }
             &:first-child {
-                padding-left: 0;
+                padding-inline-start: 0;
+            }
+
+            @media screen and (max-width: 31.25rem) {
+                &:first-child {
+                    padding-inline: $padding-lg;
+                    border-left: 1.3px solid rgba(black, 0.2);
+                }
             }
         }
     }
