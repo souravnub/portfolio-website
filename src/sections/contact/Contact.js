@@ -60,29 +60,12 @@ const Contact = () => {
             ".main-contact-container__info-container__contact-btn-container .text-container"
         );
         textContainer.forEach((container) => {
-            let timeline = gsap.timeline({
-                defaults: { duration: 0.8, ease: "power4" },
-            });
             let text = container.querySelector(
                 ".text-container__main-text-container__main-text"
-            );
-            let bottomLine = container.querySelector(
-                ".text-container__main-text-container__bottom-line"
             );
             let absText = container.querySelector(".abs-text");
 
             absText.style.left = `${text.getBoundingClientRect().width + 20}px`;
-
-            text.addEventListener("mouseover", () => {
-                timeline
-                    .to(bottomLine, { scaleX: 1 })
-                    .to(absText, { opacity: 0.6, x: 0 }, "-=.3");
-            });
-            text.addEventListener("mouseout", () => {
-                timeline
-                    .to(absText, { opacity: 0, x: "-1.4rem" })
-                    .to(bottomLine, { scaleX: 0.14 }, "-=.3");
-            });
         });
     }, []);
     return (

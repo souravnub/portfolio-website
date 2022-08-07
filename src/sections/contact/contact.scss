@@ -85,6 +85,21 @@
                 font-size: 1.1rem;
                 color: white;
 
+                &:hover,
+                &:focus-visible {
+                    .text-container {
+                        &__main-text-container {
+                            &__bottom-line {
+                                transform: scale(1);
+                            }
+                        }
+                    }
+                    .abs-text {
+                        transform: translateX(0);
+                        opacity: 0.6;
+                    }
+                }
+
                 .text-container {
                     display: flex;
                     gap: $gap-lg;
@@ -102,9 +117,9 @@
                             height: 1.5px;
                             border-radius: 100vh;
 
-                            // for gsap
                             transform: scaleX(0.14);
                             transform-origin: left;
+                            transition: transform 350ms ease-in-out;
                         }
                     }
 
@@ -117,8 +132,12 @@
                         pointer-events: none;
 
                         width: max-content;
-                        // for gsap
+
                         transform: translateX(-1.4rem);
+                        transition: transform 300ms ease-in-out,
+                            opacity 300ms ease-in-out;
+                        transition-delay: 180ms;
+
                         opacity: 0;
                     }
                 }
