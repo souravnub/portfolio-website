@@ -268,16 +268,23 @@ const About = () => {
                         </div>
                     </div>
                     <div className="main-about-page-container__about-me-info__cards-container__card">
-                        <div className="card-head">technologies I use</div>
+                        <div className="card-head">
+                            technologies I am currently using
+                        </div>
                         <span className="line">
                             <span className="circle"></span>
                         </span>
                         <div className="info">
                             <span>React - for making UI</span>
-                            <span>gsap - for animations and interactions</span>
-                            <span>sass - for managing css</span>
+                            <span>
+                                gsap, framer motion - for animations and
+                                interactions
+                            </span>
+                            <span>
+                                sass, styled components - for managing css
+                            </span>
                             <span>node &#38; express - for backend</span>
-                            <span>database - mongodb</span>
+                            <span>mongodb - database</span>
                         </div>
                     </div>
                     <div className="main-about-page-container__about-me-info__cards-container__card">
@@ -288,9 +295,10 @@ const About = () => {
                         <div className="info">
                             <span>working with Next js</span>
                             <span>
-                                improving micro interactions &#38; animations
+                                improving micro interactions, animations &#38;
+                                backend sills
                             </span>
-                            <span>diving deep into design &#38; 3d web </span>
+                            <span>diving deep into design &#38; three js </span>
                         </div>
                     </div>
                 </div>

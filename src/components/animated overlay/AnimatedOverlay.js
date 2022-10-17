@@ -72,14 +72,14 @@ const AnimatedOverlay = () => {
             });
         }
 
-        window.screen.orientation.addEventListener("change", function (e) {
-            overlayRef.current.style.transform = `translateY(-${
-                overlayRef.current.getBoundingClientRect().height + curveHeight
-            }px)`;
-        });
-
         // no need the remove the above eventListner as the animatedOverlay will never be unmounted ...so no issues
     }, []);
+
+    useEffect(() => {
+        overlayRef.current.style.transform = `translateY(-${
+            overlayRef.current.getBoundingClientRect().height + curveHeight
+        }px)`;
+    }, [window.innerHeight, window.innerWidth]);
 
     return (
         <div className="animated-overlay" ref={overlayRef}>

@@ -23,12 +23,13 @@ const MobileMockup = ({ asset }) => {
             )}
             {asset.type === "video" && (
                 <video
+                    id={asset.source}
+                    src={asset.source}
                     autoPlay
                     muted
+                    playsInline
                     loop
-                    src={asset.source}
-                    className="mobile-mockup-container__design-asset"
-                />
+                    className="mobile-mockup-container__design-asset"></video>
             )}
         </div>
     );

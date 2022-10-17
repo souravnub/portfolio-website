@@ -93,10 +93,12 @@ const ProjectsSection = () => {
                                     key={id}>
                                     {video ? (
                                         <video
+                                            id={video}
                                             src={video}
                                             autoPlay
                                             muted
-                                            loop></video>
+                                            loop
+                                            playsInline></video>
                                     ) : (
                                         <img src={img} alt="" />
                                     )}
@@ -120,10 +122,12 @@ const ProjectsSection = () => {
                                     key={id}>
                                     {video ? (
                                         <video
+                                            id={video}
                                             src={video}
                                             autoPlay
                                             muted
-                                            loop></video>
+                                            loop
+                                            playsInline></video>
                                     ) : (
                                         <img src={img}></img>
                                     )}

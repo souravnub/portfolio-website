@@ -23,12 +23,13 @@ const DesktopMockup = ({ asset }) => {
             )}
             {asset.type === "video" && (
                 <video
+                    id={asset.source}
+                    src={asset.source}
                     autoPlay
                     muted
                     loop
-                    src={asset.source}
-                    className="device-mockup-container__design-asset"
-                />
+                    playsInline
+                    className="device-mockup-container__design-asset"></video>
             )}
         </div>
     );

@@ -29,11 +29,14 @@ const TabletMockup = ({ asset, showBg = false }) => {
                 )}
                 {asset.type === "video" && (
                     <video
-                        autoPlay
-                        muted
+                        id={asset.source}
                         src={asset.source}
-                        className="tablet-mockup-container__design-asset"
-                    />
+                        autoPlay=""
+                        muted=""
+                        playsInline=""
+                        data-wf-ignore="true"
+                        data-object-fit="cover"
+                        className="tablet-mockup-container__design-asset"></video>
                 )}
             </div>
         </div>

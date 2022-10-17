@@ -32,7 +32,9 @@ const SingleWorkPage = () => {
         mobileVideo,
         tabletVideo,
         techUsed,
-    } = allWorks.filter((work) => work.inSiteLinkText === currentLink)[0];
+    } = allWorks.find((work) => work.inSiteLinkText === currentLink);
+
+    console.log(allWorks.find((work) => work.inSiteLinkText === currentLink));
 
     useEffect(() => {
         dispatch(setNavTextColor("black"));
