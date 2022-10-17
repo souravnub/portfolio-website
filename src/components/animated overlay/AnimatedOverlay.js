@@ -43,6 +43,9 @@ const AnimatedOverlay = () => {
 
             timeline
                 .set(document.body, { overflow: "hidden" })
+                .set(".animated-overlay", {
+                    y: 0,
+                })
                 .to(".animated-overlay__text", {
                     opacity: 1,
                     duration: textFadeDuration,
@@ -62,7 +65,7 @@ const AnimatedOverlay = () => {
                         overlayRef.current.getBoundingClientRect().height +
                         curveHeight
                     }px`,
-                    duration: 1.1,
+                    duration: 1.2,
                     ease: "expo.inOut",
                 })
                 .set(document.body, { overflow: "auto" });
