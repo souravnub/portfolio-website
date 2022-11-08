@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { useState } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Contact from "../../sections/contact/Contact";
-import myAboutImg from "../../assets/images/my images/my-portfolio-about-img.jpg";
+import myAboutImg from "../../assets/images/my images/my-portfolio-about-img.JPEG";
 import ImageParallax from "../../components/img parallax/ImageParallax";
 
 const About = () => {
@@ -69,7 +69,7 @@ const About = () => {
                 trigger: ".main-about-page-container__main-about-section__info",
                 start: "top 50%",
                 end: "500% 80%",
-                scrub: 1.2,
+                scrub: 0.6,
             },
         });
         infoContainerTimeline
@@ -180,6 +180,7 @@ const About = () => {
                     <ImageParallax
                         img={myAboutImg}
                         setHasImgLoaded={setHasImgLoaded}
+                        strength={5}
                     />
                 </div>
             </div>
@@ -296,7 +297,7 @@ const About = () => {
                             <span>working with Next js</span>
                             <span>
                                 improving micro interactions, animations &#38;
-                                backend sills
+                                backend skills
                             </span>
                             <span>diving deep into design &#38; three js </span>
                         </div>

@@ -8,12 +8,13 @@ const ProjectsSection = () => {
     let [projectsArr, setProjectsArr] = useState(projects);
 
     let { deviceType } = useSelector((store) => store.deviceType);
+    let { windowWidth } = useSelector((store) => store.windowDimmensions);
 
     let hideOnWidth = 500;
 
     useEffect(() => {
         let setArrLength = () => {
-            if (window.innerWidth > 1150) {
+            if (windowWidth > 1150) {
                 setProjectsArr(projects);
             } else {
                 setProjectsArr(projects.slice(0, 6));
@@ -36,7 +37,7 @@ const ProjectsSection = () => {
     }, [projectsArr]);
 
     let setSlidingAnimations = () => {
-        if (window.innerWidth < hideOnWidth && deviceType === "mobile") {
+        if (windowWidth < hideOnWidth && deviceType === "mobile") {
             return;
         }
         let timeline = gsap.timeline({
@@ -70,7 +71,7 @@ const ProjectsSection = () => {
             );
     };
 
-    if (window.innerWidth < hideOnWidth && deviceType === "mobile") {
+    if (windowWidth < hideOnWidth && deviceType === "mobile") {
         return;
     }
 

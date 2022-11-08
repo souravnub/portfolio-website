@@ -14,7 +14,7 @@ const MobileMockupSection = ({ data }) => {
     let mainContainerRef = useRef();
     let [shouldShowSection, setShouldShowSection] = useState(false);
 
-    let { windowWidth } = useSelector((store) => store.windowWidth);
+    let { windowWidth } = useSelector((store) => store.windowDimmensions);
     // CONVERSION_WIDTH  is the width at which the mobileMockupSection will change its state.. from three mobile mockups to one mobile mockup
     let CONVERSION_WIDTH = 500;
 

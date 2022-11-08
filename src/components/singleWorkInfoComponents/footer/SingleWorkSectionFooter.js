@@ -17,6 +17,7 @@ const SingleWorkSectionFooter = ({ nextWorkIndex }) => {
     let allWorksLiknRef = useRef();
 
     let { deviceType } = useSelector((store) => store.deviceType);
+    let { windowWidth } = useSelector((store) => store.windowDimmensions);
 
     useEffect(() => {
         let workLinkTransition;
@@ -69,9 +70,8 @@ const SingleWorkSectionFooter = ({ nextWorkIndex }) => {
                     scrollTrigger: {
                         trigger: ".single-work-section-main-container",
                         scrub: 1,
-                        start: window.innerWidth > 800 ? "top 20%" : "30% 60%",
-                        end:
-                            window.innerWidth < 800 ? "60% 80%" : "bottom 100%",
+                        start: windowWidth > 800 ? "top 20%" : "30% 60%",
+                        end: windowWidth < 800 ? "60% 80%" : "bottom 100%",
                         toggleActions: "play reverse play reverse",
                     },
                 }
@@ -86,8 +86,8 @@ const SingleWorkSectionFooter = ({ nextWorkIndex }) => {
                     y: 0,
                     scrollTrigger: {
                         trigger: footerContainerRef.current,
-                        start: window.innerWidth > 600 ? "0% 70%" : "30% 70%",
-                        end: window.innerWidth > 600 ? "100% 90%" : "120% 90%",
+                        start: windowWidth > 600 ? "0% 70%" : "30% 70%",
+                        end: windowWidth > 600 ? "100% 90%" : "120% 90%",
                         scrub: 1.2,
                     },
                 }

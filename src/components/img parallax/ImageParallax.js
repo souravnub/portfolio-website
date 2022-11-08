@@ -27,7 +27,7 @@ const ImageParallax = ({ img, strength = 10, setHasImgLoaded }) => {
                 trigger: ".img-parallax-container",
                 start: "-20% 30%",
                 end: "bottom 10%",
-                scrub: 1.4,
+                scrub: 1,
             },
         });
         return () => {

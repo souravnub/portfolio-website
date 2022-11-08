@@ -10,7 +10,9 @@ const AnimatedOverlay = () => {
 
     let [curveHeight, setCurverHeight] = useState(200);
     let overlayRef = useRef();
-    let { windowWidth } = useSelector((store) => store.windowWidth);
+    let { windowWidth, windowHeight } = useSelector(
+        (store) => store.windowDimmensions
+    );
 
     let textArr = [
         "hello",
@@ -82,7 +84,7 @@ const AnimatedOverlay = () => {
         overlayRef.current.style.transform = `translateY(-${
             overlayRef.current.getBoundingClientRect().height + curveHeight
         }px)`;
-    }, [window.innerHeight, window.innerWidth]);
+    }, [windowWidth, windowHeight]);
 
     return (
         <div className="animated-overlay" ref={overlayRef}>

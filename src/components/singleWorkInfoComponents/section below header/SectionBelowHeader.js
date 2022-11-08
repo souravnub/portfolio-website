@@ -11,7 +11,7 @@ const SectionBelowHeader = ({ liveSiteLink, brandImg, brandNameImg }) => {
     let mainContainerRef = useRef();
     let liveLinkRef = useRef();
 
-    let { windowWidth } = useSelector((store) => store.windowWidth);
+    let { windowWidth } = useSelector((store) => store.windowDimmensions);
 
     // wrt scrren -> 90vh
     let sectionHeight = 90;

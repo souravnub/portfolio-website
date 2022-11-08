@@ -19,7 +19,10 @@ import {
 } from "./features/page transition overlay/PageTransitionOverlaySlice";
 import SingleWorkPage from "./pages/single work info/SingleWorkPage";
 import { setDeviceType } from "./features/checkDeviceType";
-import { setWindowWidth } from "./features/windowWidthSlice";
+import {
+    setWindowHeight,
+    setWindowWidth,
+} from "./features/windowDimensionsSlice";
 import ContactPage from "./pages/contact/ContactPage";
 
 function App() {
@@ -39,8 +42,10 @@ function App() {
         detectDeviceType();
 
         dispatch(setWindowWidth(window.innerWidth));
+        dispatch(setWindowHeight(window.innerHeight));
         window.addEventListener("resize", () => {
             dispatch(setWindowWidth(window.innerWidth));
+            dispatch(setWindowHeight(window.innerHeight));
         });
     }, []);
 

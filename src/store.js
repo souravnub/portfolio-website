@@ -3,7 +3,7 @@ import checkDeviceType from "./features/checkDeviceType";
 import menuSlice from "./features/menu/menuSlice";
 import navSlice from "./features/navigation/navSlice";
 import PageTransitionOverlaySlice from "./features/page transition overlay/PageTransitionOverlaySlice";
-import windowWidthSlice from "./features/windowWidthSlice";
+import windowDimensionsSlice from "./features/windowDimensionsSlice";
 
 let store = configureStore({
     reducer: {
@@ -11,7 +11,7 @@ let store = configureStore({
         nav: navSlice,
         pageTransitionOverlay: PageTransitionOverlaySlice,
         deviceType: checkDeviceType,
-        windowWidth: windowWidthSlice,
+        windowDimmensions: windowDimensionsSlice,
     },
 });
 

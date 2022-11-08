@@ -35,7 +35,7 @@
         gap: $gap-md;
         align-items: center;
 
-        @media screen and (max-width: 34.25rem) {
+        @media screen and (max-width: 56.25rem) {
             font-size: $fs-sm !important;
             padding-block: $padding-extra-sm;
             padding-inline: $padding-sm;
@@ -80,7 +80,7 @@
         color: white;
 
         //550px
-        @media screen and (max-width: 34.25rem) {
+        @media screen and (max-width: 56.25rem) {
             top: unset;
             bottom: 0;
             left: $padding-sm;

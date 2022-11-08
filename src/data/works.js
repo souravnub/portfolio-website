@@ -31,6 +31,8 @@ export const allWorks = [
         img: getImgURL("smart-img"),
         yearOfProduction: 2022,
         techUsed: ["react", "node", "express", "mongoDB", "scss", "jwt"],
+        description:
+            "A fictional e-commerce website built with modern techonologies. A user can have a real e-commerce experience, including : managing cart and wishlist, sending messages to the owner, rating and adding comments to the product and can use all authetication features. A separate dashboard for owner helps him/her to  manage all the products, reply incomming customers' messages, perform CRUD operations on the products and manage all the orders, users and comments on the products.",
 
         brandingColor: "cadetblue",
         brandImg:
@@ -53,6 +55,8 @@ export const allWorks = [
         info: "interaction & development",
         img: getImgURL("news-flash-img"),
         techUsed: ["html", "scss", "js"],
+        description:
+            "A fictional blogging website made for learning purpose with a magnificent grid design throughout the website,awsome color scheme and interactivity",
 
         brandingColor: "#d7d7d7",
         brandImg:
@@ -75,6 +79,8 @@ export const allWorks = [
         img: getImgURL("t-movies-img"),
         yearOfProduction: 2022,
         techUsed: ["react", "TMDB api", "scss"],
+        description:
+            "A web app that lays out all the current popular movies & TV shows. One can have a glance over movies/TV shows of different categories and can add them to a bookmark list as desirable. The quick glance includes : Trailer of the movie/show , the contributers (actors, directors etc.), similar movies/TV shows and  a short description. ",
 
         brandingColor: "#ffa901",
         brandImg:
@@ -98,6 +104,8 @@ export const allWorks = [
         yearOfProduction: 2022,
         img: getImgURL("home-verse-img"),
         techUsed: ["html", "scss", "js"],
+        description:
+            "A fictional, static website for a property dealing/rental company (Homeverse). Along with an eye-catching design, the website is also completely responsive and interactive.",
 
         brandingColor: "rgb(255, 103, 77) ",
         brandImg:
@@ -119,7 +127,8 @@ export const allWorks = [
         img: getImgURL("sneakers-website-img"),
         techUsed: ["react", "scss"],
 
-        techUsed: ["react", "scss"],
+        description:
+            "A simple react app made for a fictional shoe company, this website was one of the early websites that I made with react. It includes a carousel with a little cart feature that replicates the cart in modern-day e-commerce websites.The website being an early stepping stone in my react journey, I thought it was worthwhile giving it a place in my portfolio.",
 
         brandingColor: "orange",
         brandImg: getImgURL("sneakers-website-brand-img"),
@@ -134,32 +143,17 @@ export const allWorks = [
         mobileImg1: sneakersWebsiteMobileImg1,
         mobileImg2: sneakersWebsiteMobileImg2,
     },
+
     {
         id: 6,
-
-        heading: "Microsoft clone",
-        info: "interaction & development",
-        yearOfProduction: 2020,
-        img: getImgURL("microsoft-clone-img"),
-        techUsed: ["html", "css", "js"],
-
-        brandingColor: "gray",
-        brandImg:
-            "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2hpdGUlMjBiZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60",
-        brandNameImg: "https://cdn-icons-png.flaticon.com/128/732/732070.png",
-        video: getVideoURL("microsoft-clone-video"),
-
-        link: "https://microsoft-clone-1.netlify.app/",
-        inSiteLinkText: "microsoft-clone",
-    },
-    {
-        id: 7,
 
         heading: "BEFIT",
         info: "interaction & development",
         yearOfProduction: 2022,
         img: getImgURL("gym-website-img"),
         techUsed: ["html", "css", "js"],
+        description:
+            "A static, accessible and responsive  gym website made with html,css & js. This website intends to replicate a modern gym website, thereby giving complete deatils about the type of services that the gym offers, listing out professional trainers and reviews of the customers and also the pricing plans avaiable.",
 
         brandingColor: "#ae1717",
         brandImg:

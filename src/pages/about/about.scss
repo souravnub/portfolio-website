@@ -233,6 +233,8 @@
 
                         aspect-ratio: 1;
                         border-radius: 50%;
+                        outline: 1.5px solid $faded-gray;
+                        outline-offset: 1px;
 
                         width: 5px;
 
@@ -269,12 +271,12 @@
                             content: "";
                             position: absolute;
                             top: 50%;
-                            left: -15.2px;
+                            left: -14.3px;
                             border-radius: 100vh;
                             transform: translateY(-50%);
-                            width: 6.4px;
-                            height: 1px;
-                            background-color: black;
+                            width: 4.4px;
+                            aspect-ratio: 1;
+                            background-color: $faded-gray;
                         }
                     }
                 }

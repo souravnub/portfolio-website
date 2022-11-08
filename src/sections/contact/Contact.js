@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import StyledBtn from "../../components/extras/StyledBtn";
 import "./contact.scss";
 import AnimatedTopCurve from "../../components/AnimatedTopCurve";
-import myImg from "../../assets/images/my images/my-portfolio-img-1.jpg";
+import myImg from "../../assets/images/my images/img-small.jpg";
 const Contact = () => {
     let phone = "+91 7710346567";
     let email = "s6hr6h4u3@gmail.com";

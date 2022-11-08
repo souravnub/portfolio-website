@@ -19,7 +19,7 @@ const Navbar = () => {
         <div role="navigation" className="top-navigation">
             <Link to="/" className="logo">
                 <RiCopyrightLine className="icon" />
-                <span>Code by Sourav</span>
+                <span>Coded by Sourav</span>
             </Link>
 
             <ul className="top-navigation__links-container">

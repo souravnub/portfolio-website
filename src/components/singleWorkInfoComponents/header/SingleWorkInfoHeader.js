@@ -6,6 +6,7 @@ const SingleWorkInfoHeader = ({
     servicesInfo,
     yearOfProduction,
     techUsed,
+    description,
 }) => {
     return (
         <div className="single-work-info-header width-container">
@@ -38,6 +39,13 @@ const SingleWorkInfoHeader = ({
                     </div>
                 )}
             </div>
+
+            {description && (
+                <div className="single-work-info-header__work-desc">
+                    <span className="head">project description</span>
+                    <p>{description}</p>
+                </div>
+            )}
         </div>
     );
 };

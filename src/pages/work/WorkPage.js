@@ -22,7 +22,7 @@ const WorkPage = () => {
     const navigate = useNavigate();
     let [currentHoveredWork, setCurrentHoveredWork] = useState(null);
 
-    let { windowWidth } = useSelector((store) => store.windowWidth);
+    let { windowWidth } = useSelector((store) => store.windowDimmensions);
     let { deviceType } = useSelector((store) => store.deviceType);
 
     useEffect(() => {

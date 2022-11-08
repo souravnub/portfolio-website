@@ -1,16 +1,18 @@
 import gsap from "gsap";
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import GridWorkDisplay from "../../components/grid work display/GridWorkDisplay";
 import { allWorks } from "../../data/works";
 import "./recentWork.scss";
 
 const RecentWorkSection = () => {
+    const { windowWidth } = useSelector((store) => store.windowDimmensions);
     useEffect(() => {
         let styledLinkTimeline = gsap.timeline({
             scrollTrigger: {
                 trigger: ".styled-link",
-                start: window.innerWidth > 1000 ? "top 95%" : "top 85%",
+                start: windowWidth > 1000 ? "top 95%" : "top 85%",
                 end: "bottom 10%",
                 toggleActions: "play reverse play reverse",
             },

@@ -32,6 +32,7 @@ const SingleWorkPage = () => {
         mobileVideo,
         tabletVideo,
         techUsed,
+        description,
     } = allWorks.find((work) => work.inSiteLinkText === currentLink);
 
     console.log(allWorks.find((work) => work.inSiteLinkText === currentLink));
@@ -53,6 +54,7 @@ const SingleWorkPage = () => {
                 servicesInfo={info}
                 yearOfProduction={yearOfProduction}
                 techUsed={techUsed}
+                description={description}
             />
             <SectionBelowHeader
                 brandImg={brandImg}

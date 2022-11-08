@@ -11,7 +11,7 @@ const PageTransitionOverlay = () => {
     let overlayRef = useRef();
     let dispatch = useDispatch();
     let { text, show } = useSelector((store) => store.pageTransitionOverlay);
-    let { windowWidth } = useSelector((store) => store.windowWidth);
+    let { windowWidth } = useSelector((store) => store.windowDimmensions);
 
     let [curveHeight, setCurverHeight] = useState(200);
     const TRANSITION_DURATION = 1;
