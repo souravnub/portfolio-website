@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { useState } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Contact from "../../sections/contact/Contact";
-import myAboutImg from "../../assets/images/my images/my-portfolio-about-img.JPEG";
+import myAboutImg from "../../assets/images/my images/my-portfolio-about-img.jpeg";
 import ImageParallax from "../../components/img parallax/ImageParallax";
 
 const About = () => {

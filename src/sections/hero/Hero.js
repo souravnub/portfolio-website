@@ -3,7 +3,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { BsGlobe } from "react-icons/bs";
 import "./hero.scss";
 import gsap from "gsap";
-import myImg from "../../assets/images/my images/my-portfolio-img-1.JPG";
+import myImg from "../../assets/images/my images/my-portfolio-img-1.jpg";
 
 const Hero = () => {
     useEffect(() => {
