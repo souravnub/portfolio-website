@@ -90,10 +90,9 @@ const ProjectLearningSectionInfoContainer = ({
             ref={infoContainerRef}>
             <div className="project-learnings-section__info-container__cursor"></div>
 
-            <button onClick={handleCloseInfoModal}>
+            <button ref={closeBtnRef} onClick={handleCloseInfoModal}>
                 <StyledBtn
                     fill="black"
-                    ref={closeBtnRef}
                     text={
                         <span>
                             <HiOutlineArrowNarrowLeft />

@@ -25,6 +25,7 @@ const SingleWorkPage = () => {
         info,
         yearOfProduction,
         link,
+        github,
         video,
         brandImg,
         brandNameImg,
@@ -60,6 +61,7 @@ const SingleWorkPage = () => {
             <SectionBelowHeader
                 brandImg={brandImg}
                 liveSiteLink={link}
+                githubLink={github}
                 brandNameImg={brandNameImg}
             />
             {video && (

@@ -60,6 +60,7 @@ export const allWorks = [
         mobileVideo: getVideoURL("smart-mobile-video"),
 
         link: "https://smart-shopping-website.netlify.app",
+        github: "https://github.com/souravnub/smart-shopping-website-frontend",
         inSiteLinkText: "smart",
     },
     {
@@ -99,6 +100,7 @@ export const allWorks = [
         video: getVideoURL("news-flash-website-video"),
 
         link: "https://blog-website.pages.dev",
+        github: "https://github.com/souravnub/Blog-website",
         inSiteLinkText: "news-flash",
 
         mobileVideo: getVideoURL("news-flash-website-mobile-video"),
@@ -136,6 +138,7 @@ export const allWorks = [
         video: getVideoURL("t-movies-video"),
 
         link: "https://t-movie-app.netlify.app",
+        github: "https://github.com/souravnub/movie-app",
         inSiteLinkText: "t-movies",
 
         mobileVideo: getVideoURL("t-movies-mobile-video"),
@@ -160,6 +163,7 @@ export const allWorks = [
 
         video: getVideoURL("home-verse-video"),
         link: "https://home-verse.netlify.app",
+        github: "https://github.com/souravnub/HomeVerse--home-selling-website",
         inSiteLinkText: "home-verse",
 
         tabletVideo: getVideoURL("home-verse-tablet-video"),
@@ -208,6 +212,7 @@ export const allWorks = [
         video: getVideoURL("gym-website-video"),
 
         link: "https://gym-website-1.netlify.app",
+        github: "https://github.com/souravnub/gym-website",
         inSiteLinkText: "befit",
 
         mobileVideo: getVideoURL("gym-website-mobile-video"),

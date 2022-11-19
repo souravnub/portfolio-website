@@ -51,4 +51,21 @@
             }
         }
     }
+
+    &__github-link {
+        position: absolute;
+        bottom: -20%;
+        left: 10%;
+
+        display: grid;
+        place-items: center;
+
+        .icon {
+            position: absolute;
+            color: black;
+            font-size: 5rem;
+
+            pointer-events: none;
+        }
+    }
 }
