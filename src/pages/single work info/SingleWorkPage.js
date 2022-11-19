@@ -11,6 +11,7 @@ import DesktopMockupSection from "../../components/singleWorkInfoComponents/desk
 import MobileMockupSection from "../../components/singleWorkInfoComponents/mobiles mockup section/MobileMockupSection";
 import TabletMockup from "../../components/mockups/tablet/TabletMockup";
 import SingleWorkSectionFooter from "../../components/singleWorkInfoComponents/footer/SingleWorkSectionFooter";
+import ProjectLearningsSection from "../../components/singleWorkInfoComponents/project learnings section/ProjectLearningsSection";
 
 const SingleWorkPage = () => {
     let { work: currentLink } = useParams();
@@ -33,9 +34,9 @@ const SingleWorkPage = () => {
         tabletVideo,
         techUsed,
         description,
+        skillsEnhanced,
+        learning,
     } = allWorks.find((work) => work.inSiteLinkText === currentLink);
-
-    console.log(allWorks.find((work) => work.inSiteLinkText === currentLink));
 
     useEffect(() => {
         dispatch(setNavTextColor("black"));
@@ -73,6 +74,13 @@ const SingleWorkPage = () => {
                 <TabletMockup
                     asset={{ type: "video", source: tabletVideo }}
                     showBg={(mobileImg1 || mobileImg2 || mobileVideo) && true}
+                />
+            )}
+            {skillsEnhanced && (
+                <ProjectLearningsSection
+                    skillsEnhancedArr={skillsEnhanced}
+                    websiteName={heading}
+                    learning={learning}
                 />
             )}
             <SingleWorkSectionFooter

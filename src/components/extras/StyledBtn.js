@@ -32,7 +32,7 @@ const StyledBtn = ({
                     y: "-100%",
                     ease: "expo.inOut",
                 })
-                .set(btnOverlay, { y: "100%" });
+                .set(btnOverlay, { y: "101%" });
         };
 
         btn.addEventListener("mouseover", () => {

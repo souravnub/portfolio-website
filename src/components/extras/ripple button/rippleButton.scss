@@ -1,0 +1,22 @@
+@use "../../../sass/base" as *;
+
+.ripple-button {
+    position: relative;
+    background-color: var(--btn-bg);
+    isolation: isolate;
+    aspect-ratio: 1;
+
+    &__ripples-container {
+        z-index: -1;
+        position: absolute;
+        inset: 0;
+
+        &__ripple {
+            position: absolute;
+
+            // for gsap;
+            transform: scale(0);
+            opacity: 0;
+        }
+    }
+}

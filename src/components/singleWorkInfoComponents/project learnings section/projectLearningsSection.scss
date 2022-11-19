@@ -1,0 +1,80 @@
+@use "../../../sass/base.scss" as *;
+
+.main-project-learnings-container {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    padding-block: $padding-extra-lg;
+
+    &__line {
+        width: max(50%, 20rem);
+        height: 2px;
+        overflow: hidden;
+        background-color: $dark-faded;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &__info-container {
+        position: fixed;
+        visibility: hidden;
+        inset: 0;
+        background-color: black;
+        z-index: 999999;
+        transform: translateY(100%);
+        transform-origin: bottom;
+
+        color: white;
+        button {
+            color: white;
+        }
+
+        &__top-curve {
+            // height 0 would mean borderRadius - 0 ,as height is directly proportional to curvature
+            position: absolute;
+            top: 0;
+            inset-inline: -13vw;
+
+            transform: translateY(-70px);
+            background-color: inherit;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+
+            height: 350px;
+            z-index: -1;
+        }
+    }
+
+    .ripple-button {
+        position: relative;
+        min-width: 15rem;
+
+        &__text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            display: flex;
+            flex-direction: column;
+            font-size: 3rem;
+            font-weight: 600;
+            font-family: $ff-poppins;
+
+            pointer-events: none;
+
+            color: $dark-faded;
+
+            &__span-container {
+                overflow: hidden;
+
+                & > span {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

@@ -33,6 +33,21 @@ export const allWorks = [
         techUsed: ["react", "node", "express", "mongoDB", "scss", "jwt"],
         description:
             "A fictional e-commerce website built with modern techonologies. A user can have a real e-commerce experience, including : managing cart and wishlist, sending messages to the owner, rating and adding comments to the product and can use all authetication features. A separate dashboard for owner helps him/her to  manage all the products, reply incomming customers' messages, perform CRUD operations on the products and manage all the orders, users and comments on the products.",
+        skillsEnhanced: [
+            {
+                name: "layout",
+                desc: "While working on this website, a good layout was something that I kept in my mind. Therefore, the website gave me a chance to brush my layout designing skills.",
+            },
+            {
+                name: "backend",
+                desc: "This website helped me to step into backend development and gave me a chance to learn the basics. I got a grip over nodejs, mongodb and a number of concepts related to the storing of data in a DB came into my acknowledgement.",
+            },
+            {
+                name: "hashing and jwt",
+                desc: "How important it is to secure data of the users in the database was something that I learnt while creating the website. Using JWTs to store information of the user on the frontend and Hashing passwords while storing them in DB were the key learnings that I got.",
+            },
+        ],
+        learning: "Make mistakes to make something big",
 
         brandingColor: "cadetblue",
         brandImg:
@@ -57,6 +72,25 @@ export const allWorks = [
         techUsed: ["html", "scss", "js"],
         description:
             "A fictional blogging website made for learning purpose with a magnificent grid design throughout the website,awsome color scheme and interactivity",
+        skillsEnhanced: [
+            {
+                name: "layout",
+                desc: "The centeral idea of the website reloves around the grid design that it has. Different sections of the website contain deifferent use-cases of grid based layout. Hence, the website helped me a lot with the understanding of the grid designs.",
+            },
+            {
+                name: "color scheme",
+                desc: "Not only the wesbite's color scheme is eye-catching, but it also have a dark theme option. Hence, along with helping me to understand the idea laying behind the theme switching,it also made me quite comfortable to work with colors.",
+            },
+            {
+                name: "fundamentals",
+                desc: "The website is fully creted with vanilla JS, Html and Scss. Therefore, working with this website also gave me a chance to brush up my fundamentals.",
+            },
+            {
+                name: "replication",
+                desc: "The website design is not mine, I tried to replicate a website from a YouTube video. The results at the end where quite pleasing as I was successfully able to replicate the complete website, along with giving attention to each and every design detail.",
+            },
+        ],
+        learning: "Learn as you move",
 
         brandingColor: "#d7d7d7",
         brandImg:
@@ -81,6 +115,18 @@ export const allWorks = [
         techUsed: ["react", "TMDB api", "scss"],
         description:
             "A web app that lays out all the current popular movies & TV shows. One can have a glance over movies/TV shows of different categories and can add them to a bookmark list as desirable. The quick glance includes : Trailer of the movie/show , the contributers (actors, directors etc.), similar movies/TV shows and  a short description. ",
+        skillsEnhanced: [
+            {
+                name: "working with API",
+                desc: "Making a website that uses a third party API is a skill that every developer should keep in handy. T-movies gave me a chance to have a similar expirence, where I used TMDB (the movie database) API for fetching all the movies and TV shows for this react-app.",
+            },
+            {
+                name: "state management",
+                desc: "This is a react app that uses react-redux-toolkit for managing state. Hence, making this website gave me a chance to deep-dive into best react state management practices.",
+            },
+        ],
+        learning:
+            "Why are you trying so hard to fit in when you were born to stand out. ",
 
         brandingColor: "#ffa901",
         brandImg:
