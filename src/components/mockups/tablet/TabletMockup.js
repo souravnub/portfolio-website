@@ -1,6 +1,6 @@
 import React from "react";
 import { PuffLoader } from "react-spinners";
-import tabletMockupImg from "../../../assets/mockups/ipad.png";
+import tabletMockupImg from "../../../assets/mockups/iPad.png";
 import "./tabletMockup.scss";
 
 // aspect ratio of video ->  1.37 / 1
@@ -31,11 +31,10 @@ const TabletMockup = ({ asset, showBg = false }) => {
                     <video
                         id={asset.source}
                         src={asset.source}
-                        autoPlay=""
-                        muted=""
-                        playsInline=""
+                        autoPlay
+                        muted
+                        playsInline
                         data-wf-ignore="true"
-                        data-object-fit="cover"
                         className="tablet-mockup-container__design-asset"></video>
                 )}
             </div>
