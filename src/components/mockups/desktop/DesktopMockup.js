@@ -1,13 +1,19 @@
 import React from "react";
-import desktopMockup from "../../../assets/mockups/desktop.png";
-import { PuffLoader } from "react-spinners";
+import desktopMockup from "../../../assets/mockups/macbook.png";
+import { FadeLoader } from "react-spinners";
 import "./desktopMockup.scss";
 
 const DesktopMockup = ({ asset }) => {
     return (
         <div className="device-mockup-container">
             <div className="device-mockup-container__loader-container">
-                <PuffLoader color="#000000" size={100} />
+                <FadeLoader
+                    color="hsla(168, 0%, 65%, 1)"
+                    height={14}
+                    margin={0}
+                    radius={5}
+                    width={3}
+                />
             </div>
             <img
                 src={desktopMockup}

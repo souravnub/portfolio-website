@@ -1,11 +1,13 @@
 @use "../../../sass/base" as *;
 
 .desktop-mockup-section {
-    padding-inline: 25%;
-    padding-block: $padding-lg;
+    padding-inline: 18%;
+    padding-block: 8rem;
 
-    width: 100%;
     position: relative;
+
+    display: grid;
+    place-items: center;
 
     background-color: rgba(black, 0.05);
 

@@ -32,6 +32,7 @@ const TabletMockup = ({ asset, showBg = false }) => {
                         id={asset.source}
                         src={asset.source}
                         autoPlay
+                        loop
                         muted
                         playsInline
                         data-wf-ignore="true"
