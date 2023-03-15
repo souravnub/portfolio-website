@@ -1,5 +1,5 @@
 import React from "react";
-import mobileMockupImg from "../../../assets/mockups/phone.png";
+import mobileMockupImg from "../../../assets/mockups/iPhone.png";
 import { PuffLoader } from "react-spinners";
 import "./mobileMockup.scss";
 

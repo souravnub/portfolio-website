@@ -1,25 +1,9 @@
 import homeverseBrandNameImg from "../assets/images/brand names/homeverse-brand-name-img.png";
-
 import blogWebsiteBrandNameImg from "../assets/images/brand names/news-flash-brand-name.png";
-import blogWebsiteMobileImg1 from "../assets/images/mobile images/news-website-mobile-img-1.png";
-import blogWebsiteMobileImg2 from "../assets/images/mobile images/news-website-mobile-img-2.png";
-
 import ECommerceWebsiteBrandNameImg from "../assets/images/brand names/smart-brand-name-img.png";
-import ECommerceWebsiteMobileImg1 from "../assets/images/mobile images/smart-mobile-img-1.jpg";
-import ECommerceWebsiteMobileImg2 from "../assets/images/mobile images/smart-mobile-img-2.png";
-
 import movieAppBrandNameImg from "../assets/images/brand names/t-movies-brand-name.png";
-import movieAppMobileImg1 from "../assets/images/mobile images/movie-app-mobile-img-1.png";
-import movieAppMobileImg2 from "../assets/images/mobile images/movie-app-mobile-img-2.png";
-
 import sneakersWebsiteBrandNameImg from "../assets/images/brand names/sneakers-brand-name-img.png";
-import sneakersWebsiteMobileImg1 from "../assets/images/mobile images/sneakers-website-mobile-img-1.png";
-import sneakersWebsiteMobileImg2 from "../assets/images/mobile images/sneakers-website-mobile-img-2.png";
-
 import gymWebsiteBrandNameImg from "../assets/images/brand names/be-fit-brand-name-img.png";
-import gymWebsiteMobileImg1 from "../assets/images/mobile images/gym-website-mobile-img-1.png";
-import gymWebsiteMobileImg2 from "../assets/images/mobile images/gym-website-mobile-img-2.png";
-
 import { getImgURL, getVideoURL } from "../api/provideURL";
 
 export const allWorks = [
@@ -55,9 +39,9 @@ export const allWorks = [
         brandNameImg: ECommerceWebsiteBrandNameImg,
         video: getVideoURL("smart-video"),
 
-        mobileImg1: ECommerceWebsiteMobileImg1,
-        mobileImg2: ECommerceWebsiteMobileImg2,
-        mobileVideo: getVideoURL("smart-mobile-video"),
+        mobileImg1: getImgURL("s-mart-mobile-img-1.png"),
+        mobileImg2: getImgURL("s-mart-mobile-img-2.png"),
+        mobileVideo: getVideoURL("s-mart-mobile-video.mkv"),
 
         link: "https://smart-shopping-website.netlify.app",
         github: "https://github.com/souravnub/smart-shopping-website-frontend",
@@ -103,9 +87,9 @@ export const allWorks = [
         github: "https://github.com/souravnub/Blog-website",
         inSiteLinkText: "news-flash",
 
-        mobileVideo: getVideoURL("news-flash-website-mobile-video"),
-        mobileImg1: blogWebsiteMobileImg1,
-        mobileImg2: blogWebsiteMobileImg2,
+        mobileVideo: getVideoURL("newsflash-mobile-video.mkv"),
+        mobileImg1: getImgURL("newsflash-mobile-img-1.png"),
+        mobileImg2: getImgURL("newsflash-mobile-img-2.png"),
     },
     {
         id: 3,
@@ -141,9 +125,9 @@ export const allWorks = [
         github: "https://github.com/souravnub/movie-app",
         inSiteLinkText: "t-movies",
 
-        mobileVideo: getVideoURL("t-movies-mobile-video"),
-        mobileImg1: movieAppMobileImg1,
-        mobileImg2: movieAppMobileImg2,
+        mobileVideo: getVideoURL("t-movies-mobile-video.mkv"),
+        mobileImg1: getImgURL("t-movies-mobile-img-1.png"),
+        mobileImg2: getImgURL("t-movies-mobile-img-2.png"),
     },
     {
         id: 4,
@@ -190,8 +174,8 @@ export const allWorks = [
         inSiteLinkText: "sneakers",
 
         mobileVideo: getVideoURL("sneakers-website-mobile-video"),
-        mobileImg1: sneakersWebsiteMobileImg1,
-        mobileImg2: sneakersWebsiteMobileImg2,
+        mobileImg1: getImgURL("sneakers-mobile-img-1.png"),
+        mobileImg2: getImgURL("sneakers-mobile-img-2.png"),
     },
 
     {
@@ -216,7 +200,7 @@ export const allWorks = [
         inSiteLinkText: "befit",
 
         mobileVideo: getVideoURL("gym-website-mobile-video"),
-        mobileImg1: gymWebsiteMobileImg1,
-        mobileImg2: gymWebsiteMobileImg2,
+        mobileImg1: getImgURL("befit-mobile-img-1.png"),
+        mobileImg2: getImgURL("befit-mobile-img-1.png"),
     },
 ];

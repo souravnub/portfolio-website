@@ -70,13 +70,17 @@ const MobileMockupSection = ({ data }) => {
     return (
         <div className="main-mobile-mockup-section" ref={mainContainerRef}>
             {mobileImg1 && windowWidth > CONVERSION_WIDTH && (
-                <MobileMockup asset={{ type: "img", source: mobileImg1 }} />
+                <div className="main-mobile-mockup-section__mobile-mockup">
+                    <img src={mobileImg1} alt="" />
+                </div>
             )}
             {mobileVideo && (
                 <MobileMockup asset={{ type: "video", source: mobileVideo }} />
             )}
             {mobileImg2 && windowWidth > CONVERSION_WIDTH && (
-                <MobileMockup asset={{ type: "img", source: mobileImg2 }} />
+                <div className="main-mobile-mockup-section__mobile-mockup">
+                    <img src={mobileImg2} alt="" />
+                </div>
             )}
         </div>
     );

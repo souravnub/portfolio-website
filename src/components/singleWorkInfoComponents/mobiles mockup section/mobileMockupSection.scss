@@ -3,8 +3,20 @@
 .main-mobile-mockup-section {
     padding-top: min(30vh, 10rem);
     padding-bottom: min(30vh, 5rem);
+
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
+
+    &__mobile-mockup {
+        width: 20%;
+        position: relative;
+        isolation: isolate;
+
+        & > img {
+            max-width: 100%;
+        }
+    }
 
     @media screen and (max-width: 31.25rem) {
         flex-direction: column;
