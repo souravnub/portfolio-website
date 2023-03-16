@@ -40,10 +40,10 @@
         position: absolute;
 
         padding: var(--bazel-width);
-        top: 0;
+        top: 0.5px;
 
         object-fit: cover;
-        border-radius: 6%;
+        border-radius: 5%;
         z-index: -1;
     }
 }

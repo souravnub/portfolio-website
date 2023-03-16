@@ -33,6 +33,7 @@ const SingleWorkPage = () => {
         mobileImg2,
         mobileVideo,
         tabletVideo,
+        tabletImg,
         techUsed,
         description,
         skillsEnhanced,
@@ -77,6 +78,9 @@ const SingleWorkPage = () => {
                     asset={{ type: "video", source: tabletVideo }}
                     showBg={(mobileImg1 || mobileImg2 || mobileVideo) && true}
                 />
+            )}
+            {tabletImg && (
+                <TabletMockup asset={{ type: "img", source: tabletImg }} />
             )}
             {skillsEnhanced && (
                 <ProjectLearningsSection

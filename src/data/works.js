@@ -1,10 +1,4 @@
-import homeverseBrandNameImg from "../assets/images/brand names/homeverse-brand-name-img.png";
-import blogWebsiteBrandNameImg from "../assets/images/brand names/news-flash-brand-name.png";
-import ECommerceWebsiteBrandNameImg from "../assets/images/brand names/smart-brand-name-img.png";
-import movieAppBrandNameImg from "../assets/images/brand names/t-movies-brand-name.png";
-import sneakersWebsiteBrandNameImg from "../assets/images/brand names/sneakers-brand-name-img.png";
-import gymWebsiteBrandNameImg from "../assets/images/brand names/be-fit-brand-name-img.png";
-import { getImgURL, getVideoURL } from "../api/provideURL";
+import { getImgURL, getVideoURL } from "../utils/provideURL";
 
 export const allWorks = [
     {
@@ -12,7 +6,7 @@ export const allWorks = [
 
         heading: "S Mart",
         info: "frontend & backend development",
-        img: getImgURL("smart-img"),
+        img: getImgURL("smart-img.png"),
         yearOfProduction: 2022,
         techUsed: ["react", "node", "express", "mongoDB", "scss", "jwt"],
         description:
@@ -36,8 +30,8 @@ export const allWorks = [
         brandingColor: "cadetblue",
         brandImg:
             "https://images.unsplash.com/photo-1580943943004-6a4697b70059?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Z2FkZ2V0c3xlbnwwfHwwfGJsYWNrfA%3D%3D&auto=format&fit=crop&w=600&q=60",
-        brandNameImg: ECommerceWebsiteBrandNameImg,
-        video: getVideoURL("smart-video"),
+        brandNameImg: getImgURL("s-mart-brand-name-img.png"),
+        video: getVideoURL("s-mart-desktop-video.mkv"),
 
         mobileImg1: getImgURL("s-mart-mobile-img-1.png"),
         mobileImg2: getImgURL("s-mart-mobile-img-2.png"),
@@ -53,7 +47,7 @@ export const allWorks = [
         heading: "NewsFlash",
         yearOfProduction: 2021,
         info: "interaction & development",
-        img: getImgURL("news-flash-img"),
+        img: getImgURL("newsflash-img.png"),
         techUsed: ["html", "scss", "js"],
         description:
             "A fictional blogging website made for learning purpose with a magnificent grid design throughout the website,awsome color scheme and interactivity",
@@ -80,8 +74,8 @@ export const allWorks = [
         brandingColor: "#d7d7d7",
         brandImg:
             "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-        brandNameImg: blogWebsiteBrandNameImg,
-        video: getVideoURL("news-flash-website-video"),
+        brandNameImg: getImgURL("newsflash-brand-name-img.png"),
+        video: getVideoURL("newsflash-desktop-video.mkv"),
 
         link: "https://blog-website.pages.dev",
         github: "https://github.com/souravnub/Blog-website",
@@ -96,7 +90,7 @@ export const allWorks = [
 
         heading: "T Movies",
         info: "interaction & development",
-        img: getImgURL("t-movies-img"),
+        img: getImgURL("t-movies-img.png"),
         yearOfProduction: 2022,
         techUsed: ["react", "TMDB api", "scss"],
         description:
@@ -117,9 +111,9 @@ export const allWorks = [
         brandingColor: "#ffa901",
         brandImg:
             "https://images.unsplash.com/photo-1515091415679-aba3be00bfb7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhbWVyYSUyMHJvbGx8ZW58MHx8MHx3aGl0ZXw%3D&auto=format&fit=crop&w=600&q=60",
-        brandNameImg: movieAppBrandNameImg,
+        brandNameImg: getImgURL("t-movies-brand-name-img.png"),
 
-        video: getVideoURL("t-movies-video"),
+        video: getVideoURL("t-movies-desktop-video.mkv"),
 
         link: "https://t-movie-app.netlify.app",
         github: "https://github.com/souravnub/movie-app",
@@ -135,7 +129,7 @@ export const allWorks = [
         heading: "HomeVerse",
         info: "interaction & development",
         yearOfProduction: 2022,
-        img: getImgURL("home-verse-img"),
+        img: getImgURL("homeverse-img.png"),
         techUsed: ["html", "scss", "js"],
         description:
             "A fictional, static website for a property dealing/rental company (Homeverse). Along with an eye-catching design, the website is also completely responsive and interactive.",
@@ -143,14 +137,14 @@ export const allWorks = [
         brandingColor: "rgb(255, 103, 77) ",
         brandImg:
             "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
-        brandNameImg: homeverseBrandNameImg,
+        brandNameImg: getImgURL("homeverse-brand-name-img.png"),
 
-        video: getVideoURL("home-verse-video"),
+        video: getVideoURL("homeverse-desktop-video.mkv"),
         link: "https://home-verse.netlify.app",
         github: "https://github.com/souravnub/HomeVerse--home-selling-website",
         inSiteLinkText: "home-verse",
 
-        tabletVideo: getVideoURL("home-verse-tablet-video"),
+        tabletVideo: getVideoURL("homeverse-tablet-video"),
     },
     {
         id: 5,
@@ -158,7 +152,7 @@ export const allWorks = [
         heading: "Sneakers",
         info: "interaction & development",
         yearOfProduction: 2022,
-        img: getImgURL("sneakers-website-img"),
+        img: getImgURL("sneakers-website-img.png"),
         techUsed: ["react", "scss"],
 
         description:
@@ -166,14 +160,14 @@ export const allWorks = [
 
         brandingColor: "orange",
         brandImg: getImgURL("sneakers-website-brand-img"),
-        brandNameImg: sneakersWebsiteBrandNameImg,
+        brandNameImg: getImgURL("sneakers-brand-name-img.png"),
 
-        video: getVideoURL("sneakers-website-video"),
+        video: getVideoURL("sneakers-desktop-video.mkv"),
 
         link: "https://frontend-project-2-lightbox-website.netlify.app",
         inSiteLinkText: "sneakers",
 
-        mobileVideo: getVideoURL("sneakers-website-mobile-video"),
+        mobileVideo: getVideoURL("sneakers-mobile-video.mkv"),
         mobileImg1: getImgURL("sneakers-mobile-img-1.png"),
         mobileImg2: getImgURL("sneakers-mobile-img-2.png"),
     },
@@ -184,7 +178,7 @@ export const allWorks = [
         heading: "BEFIT",
         info: "interaction & development",
         yearOfProduction: 2022,
-        img: getImgURL("gym-website-img"),
+        img: getImgURL("gym-website-img.png"),
         techUsed: ["html", "css", "js"],
         description:
             "A static, accessible and responsive  gym website made with html,css & js. This website intends to replicate a modern gym website, thereby giving complete deatils about the type of services that the gym offers, listing out professional trainers and reviews of the customers and also the pricing plans avaiable.",
@@ -192,15 +186,13 @@ export const allWorks = [
         brandingColor: "#ae1717",
         brandImg:
             "https://images.unsplash.com/photo-1526314149856-d8cf115d62f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1949&q=80",
-        brandNameImg: gymWebsiteBrandNameImg,
-        video: getVideoURL("gym-website-video"),
+        brandNameImg: getImgURL("befit-brand-name-img.png"),
+
+        video: getVideoURL("befit-desktop-video.mkv"),
+        tabletImg: getImgURL("befit-tablet-img.png"),
 
         link: "https://gym-website-1.netlify.app",
         github: "https://github.com/souravnub/gym-website",
         inSiteLinkText: "befit",
-
-        mobileVideo: getVideoURL("gym-website-mobile-video"),
-        mobileImg1: getImgURL("befit-mobile-img-1.png"),
-        mobileImg2: getImgURL("befit-mobile-img-1.png"),
     },
 ];
