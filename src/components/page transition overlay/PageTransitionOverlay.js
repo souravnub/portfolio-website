@@ -3,7 +3,9 @@ import React from "react";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux/es/exports";
-import { setPageTransitionOverlay } from "../../features/page transition overlay/PageTransitionOverlaySlice";
+import PageTransitionOverlaySlice, {
+    setPageTransitionOverlay,
+} from "../../features/page transition overlay/PageTransitionOverlaySlice";
 import SmallDot from "../extras/small dot/SmallDot";
 import "./pageTransitionOverlay.scss";
 
@@ -11,27 +13,9 @@ const PageTransitionOverlay = () => {
     let overlayRef = useRef();
     let dispatch = useDispatch();
     let { text, show } = useSelector((store) => store.pageTransitionOverlay);
-    let { windowWidth } = useSelector((store) => store.windowDimmensions);
 
-    let [curveHeight, setCurverHeight] = useState(200);
     const TRANSITION_DURATION = 1;
-
-    useEffect(() => {
-        if (windowWidth > 750) {
-            setCurverHeight(200);
-        } else {
-            setCurverHeight(50);
-        }
-
-        overlayRef.current.style.transform = `translateY(${
-            -(
-                overlayRef.current.getBoundingClientRect().height +
-                document
-                    .querySelector(".page-transition-overlay__bottom-curve")
-                    .getBoundingClientRect().height
-            ) + "px"
-        })`;
-    }, [windowWidth, curveHeight]);
+    const CURVE_HEIGHT = 220;
 
     useEffect(() => {
         if (show) {
@@ -40,35 +24,55 @@ const PageTransitionOverlay = () => {
             );
             let overlay = overlayRef.current;
 
-            let overlayHeight =
-                overlay.getBoundingClientRect().height + curveHeight;
             let transitionTimeline = gsap.timeline({
                 defaults: { ease: "expo.inOut", duration: TRANSITION_DURATION },
                 onStart: function () {
                     window.scrollTo("top", 0);
                 },
+                onComplete: function () {
+                    dispatch(setPageTransitionOverlay(false));
+                },
             });
-            gsap.set(pageTransitionContainer, {
-                opacity: 0,
-            });
+
             transitionTimeline
-                .set(overlay, {
-                    y: overlayHeight + "px",
-                })
-                .to(overlay, {
-                    y: 0,
-                })
-                .to(overlay, {
-                    y: -overlayHeight + "px",
-                })
-                .to(
+
+                .fromTo(
+                    overlay,
+                    { y: overlay.offsetHeight + CURVE_HEIGHT },
+                    {
+                        y: 0,
+                    }
+                )
+                .fromTo(
+                    ".page-transition-overlay__top-curve",
+                    {
+                        height: CURVE_HEIGHT,
+                    },
+                    {
+                        height: 0,
+                    },
+                    "<"
+                )
+                .to(overlay, { y: "-100%" })
+
+                .fromTo(
+                    ".page-transition-overlay__bottom-curve",
+                    {
+                        height: CURVE_HEIGHT,
+                    },
+                    {
+                        height: 0,
+                    },
+                    "<+=10%"
+                )
+                .fromTo(
                     pageTransitionContainer,
+                    { opacity: 0 },
                     {
                         opacity: 1,
                     },
-                    "-=1"
+                    "<"
                 );
-            dispatch(setPageTransitionOverlay(false));
         }
     }, [show]);
 
@@ -76,7 +80,7 @@ const PageTransitionOverlay = () => {
         <div
             className="page-transition-overlay"
             ref={overlayRef}
-            style={{ "--curve-height": curveHeight + "px" }}>
+            style={{ "--curve-height": CURVE_HEIGHT + "px" }}>
             <div className="page-transition-overlay__top-curve"></div>
             <div className="page-transition-overlay__text-container">
                 <SmallDot fill="white" size=".6rem" />

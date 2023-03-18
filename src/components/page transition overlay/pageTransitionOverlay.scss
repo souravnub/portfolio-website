@@ -1,7 +1,7 @@
 @use "../../sass/base" as *;
 
 .page-transition-overlay {
-    $curve-height: var(--curve-height);
+    --curve-height: 0;
 
     position: fixed;
     inset: 0;
@@ -20,7 +20,7 @@
     font-family: $ff-roboto;
     text-transform: capitalize;
 
-    transform: translateY(calc((100% + $curve-height)));
+    transform: translateY(clac(100% + var(--curve-height)));
 
     &__text-container {
         display: flex;
@@ -31,17 +31,23 @@
     &__top-curve,
     &__bottom-curve {
         position: absolute;
-        top: calc(($curve-height) / -1.2);
-        width: 110%;
+        height: var(--curve-height);
+        inset-inline: -10%;
         background-color: inherit;
-        height: $curve-height;
+    }
+
+    &__top-curve {
+        top: 0;
+        transform: translateY(-99%);
+
         border-top-left-radius: 50%;
         border-top-right-radius: 50%;
     }
     &__bottom-curve {
-        bottom: calc(($curve-height) / -1.2);
-        top: unset;
-        border-radius: 0;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(99%);
+
         border-bottom-left-radius: 50%;
         border-bottom-right-radius: 50%;
     }

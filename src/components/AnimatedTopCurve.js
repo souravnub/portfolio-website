@@ -26,7 +26,7 @@ const AnimatedTopCurve = ({ nextWorkIndex }) => {
         }, [1500]);
 
         return () => {
-            transition?.kill();
+            transition?.revert();
             clearTimeout(timeout);
         };
     }, [nextWorkIndex]);
