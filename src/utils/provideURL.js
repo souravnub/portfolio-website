@@ -9,9 +9,9 @@ export function genURL({ contentType, assetName }) {
 }
 
 export function getVideoURL(name) {
-    return `https://res.cloudinary.com/sourav-cloudinary-account/video/upload/v1678953914/portfolio/videos/${name}`;
+    return `https://res.cloudinary.com/sourav-cloudinary-account/video/upload/portfolio/videos/${name}`;
 }
 
 export function getImgURL(name) {
-    return `https://res.cloudinary.com/sourav-cloudinary-account/image/upload/v1678811806/portfolio/images/${name}`;
+    return `https://res.cloudinary.com/sourav-cloudinary-account/image/upload/portfolio/images/${name}`;
 }

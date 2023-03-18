@@ -8,68 +8,71 @@ import "./animatedOverlay.scss";
 const AnimatedOverlay = () => {
     let location = useLocation();
 
-    let [curveHeight, setCurverHeight] = useState(200);
     let overlayRef = useRef();
-    let { windowWidth, windowHeight } = useSelector(
-        (store) => store.windowDimmensions
-    );
 
     let textArr = [
-        "hello",
+        "Hello",
         "bonjour",
         "hola",
         "ciao",
         "Olá",
         "Kia Ora",
-        "ਸੁਆਗਤ ਹੈ",
         "G’day",
+        "स्वागत हे",
         "欢迎",
         "Zdravo",
-        "स्वागत हे",
+        "ਸੁਆਗਤ ਹੈ",
     ];
 
     useEffect(() => {
-        if (windowWidth > 750) {
-            setCurverHeight(200);
-        } else {
-            setCurverHeight(50);
-        }
-    }, [windowWidth]);
-
-    useEffect(() => {
+        let timeline = gsap.timeline();
         if (location.pathname === "" || location.pathname === "/") {
-            let timeline = gsap.timeline();
-
-            let stagger = 0.28;
-            let textFadeDuration = 0.28;
+            const textElements = Array.from(
+                document.querySelectorAll(".animated-overlay__text")
+            );
 
             timeline
                 .set(document.body, { overflow: "hidden" })
                 .set(".animated-overlay", {
                     y: 0,
                 })
-                .to(".animated-overlay__text", {
+                .to(textElements[0], {
+                    opacity: 0,
+                    delay: 0.8,
+                    duration: 0.1,
+                })
+
+                .to(textElements.slice(1), {
                     opacity: 1,
-                    duration: textFadeDuration,
-                    stagger,
+                    duration: 0,
+                    stagger: 0.15,
                 })
                 .to(
-                    `.animated-overlay__text:not(:nth-child(${textArr.length}))`,
+                    textElements.slice(1, textElements.length - 1),
                     {
                         opacity: 0,
-                        duration: textFadeDuration,
-                        stagger,
+                        duration: 0,
+                        stagger: 0.15,
                     },
-                    `-=${textFadeDuration * textArr.length - 0.25}`
+                    "<+=12%"
                 )
-                .to(".animated-overlay", {
-                    y: `-${
-                        overlayRef.current.getBoundingClientRect().height +
-                        curveHeight
-                    }px`,
-                    duration: 1.2,
-                    ease: "expo.inOut",
-                })
+                .to(
+                    ".animated-overlay",
+                    {
+                        y: `-100%`,
+                        duration: 1.2,
+                        ease: "expo.inOut",
+                    },
+                    ">+=.5"
+                )
+                .to(
+                    ".animated-overlay__bottom-curve",
+                    {
+                        height: 0,
+                        ease: "expo.out",
+                    },
+                    ">-40%"
+                )
                 .set(document.body, { overflow: "auto" });
         } else {
             gsap.set(".animated-overlay", {
@@ -77,14 +80,10 @@ const AnimatedOverlay = () => {
             });
         }
 
-        // no need the remove the above eventListner as the animatedOverlay will never be unmounted ...so no issues
+        return () => {
+            timeline.revert();
+        };
     }, []);
-
-    useEffect(() => {
-        overlayRef.current.style.transform = `translateY(-${
-            overlayRef.current.getBoundingClientRect().height + curveHeight
-        }px)`;
-    }, [windowWidth, windowHeight]);
 
     return (
         <div className="animated-overlay" ref={overlayRef}>
@@ -95,9 +94,7 @@ const AnimatedOverlay = () => {
                 </span>
             ))}
 
-            <div
-                className="animated-overlay__bottom-curve"
-                style={{ "--curve-height": `${curveHeight}px` }}></div>
+            <div className="animated-overlay__bottom-curve"></div>
         </div>
     );
 };
