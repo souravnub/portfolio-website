@@ -5,6 +5,12 @@
     margin-bottom: $padding-extra-lg;
 
     padding-inline: $padding-lg;
+    min-height: 80vh;
+
+    @media screen and (max-width: 500px) {
+        min-height: 50vh;
+        padding-inline: $padding-md;
+    }
 
     position: relative;
 
@@ -16,14 +22,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-
-    &__brand-name-img {
-        margin-inline: auto;
-        display: block;
-
-        margin-top: 50%;
-        transform: translateY(-50%);
-    }
 
     &__link {
         position: absolute;

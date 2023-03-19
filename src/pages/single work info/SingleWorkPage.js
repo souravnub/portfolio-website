@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux/es/exports";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { setNavTextColor } from "../../features/navigation/navSlice";
 import { useRef } from "react";
 import "./singleWorkPage.scss";
@@ -18,6 +19,20 @@ const SingleWorkPage = () => {
 
     let dispatch = useDispatch();
     let mainWorkPageContainerRef = useRef();
+
+    useEffect(() => {
+        const container = mainWorkPageContainerRef.current;
+
+        const resize_ob = new ResizeObserver(function () {
+            ScrollTrigger.refresh();
+        });
+
+        resize_ob.observe(container);
+
+        return () => {
+            resize_ob.unobserve(container);
+        };
+    }, []);
 
     let {
         id,

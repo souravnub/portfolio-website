@@ -48,22 +48,22 @@
 .rounded-div-container {
     position: absolute;
     top: 0;
-    inset-inline: 0;
-    overflow: hidden;
-
-    height: 70px;
+    width: 100%;
 
     // default bg color
-    z-index: 99;
+    overflow: hidden;
+    background-color: $dark-faded;
+    height: 70px;
 
     .rounded-div {
+        z-index: 99;
+        box-shadow: 0 0 10px 0px $dark-faded;
         background-color: white;
-
         position: absolute;
         bottom: 0;
-        inset-inline: -40vw;
-        border-radius: 50%;
-
-        transform: translateY(-10px);
+        inset-inline: -3vw;
+        height: 100%;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
     }
 }

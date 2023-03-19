@@ -4,9 +4,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { BsGithub } from "react-icons/bs";
 import "./section.scss";
 import { useEffect } from "react";
-import { Parallax } from "react-parallax";
 import gsap from "gsap";
-import { useSelector } from "react-redux";
 
 const SectionBelowHeader = ({
     liveSiteLink,
@@ -18,16 +16,8 @@ const SectionBelowHeader = ({
     let liveLinkRef = useRef();
     let githubLinkRef = useRef();
 
-    let { windowWidth } = useSelector((store) => store.windowDimmensions);
-
-    // wrt scrren -> 70vh
-    let sectionHeight = 70;
-
-    // the width at which the img sectoin will change its state -> parallax / fixed
-    let parallaxToggleWidth = 1000;
-
     useEffect(() => {
-        gsap.to(liveLinkRef.current, {
+        const liveLinkAni = gsap.to(liveLinkRef.current, {
             y: "-100%",
             scrollTrigger: {
                 trigger: mainContainerRef.current,
@@ -35,7 +25,7 @@ const SectionBelowHeader = ({
                 scrub: 1,
             },
         });
-        gsap.to(githubLinkRef.current, {
+        const githubLinkAni = gsap.to(githubLinkRef.current, {
             y: "-50%",
             scrollTrigger: {
                 trigger: mainContainerRef.current,
@@ -43,51 +33,21 @@ const SectionBelowHeader = ({
                 scrub: 2,
             },
         });
+        return () => {
+            liveLinkAni.revert();
+            githubLinkAni.revert();
+        };
     }, []);
 
     return (
         <div
             className="single-work-info-live-link-section width-container"
             ref={mainContainerRef}
-            style={{
-                minHeight:
-                    windowWidth > parallaxToggleWidth
-                        ? sectionHeight + "vh"
-                        : "unset",
-                paddingBlock:
-                    windowWidth < parallaxToggleWidth ? "10rem" : "unset",
-                backgroundImage:
-                    windowWidth < parallaxToggleWidth
-                        ? `url("${brandImg}")`
-                        : "unset",
-            }}>
-            {windowWidth < parallaxToggleWidth && (
-                <img
-                    src={brandNameImg}
-                    className="brand-name-img-without-parallax"
-                />
-            )}
-            {brandNameImg && windowWidth > parallaxToggleWidth && (
-                <Parallax
-                    bgImage={brandImg}
-                    strength={-100}
-                    blur={{ min: -1, max: 2 }}
-                    style={{
-                        width: "100%",
-                        height: sectionHeight + "vh",
-                        paddingInline: "5rem",
-                    }}>
-                    <img
-                        src={brandNameImg}
-                        alt="brand name"
-                        className="single-work-info-live-link-section__brand-name-img"
-                        style={{
-                            marginTop: sectionHeight / 2 + "vh",
-                            transform: "translateY(-50%)",
-                        }}
-                    />
-                </Parallax>
-            )}
+            style={{ backgroundImage: `url(${brandImg})` }}>
+            <img
+                src={brandNameImg}
+                className="single-work-info-live-link-section__img-container__brand-name-img"
+            />
 
             {liveSiteLink && (
                 <a
