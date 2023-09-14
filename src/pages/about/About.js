@@ -4,17 +4,14 @@ import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import alienSvg from "../../assets/svgs/alien.svg";
 import "./about.scss";
 import gsap from "gsap";
-import { useState } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Contact from "../../sections/contact/Contact";
 import myAboutImg from "../../assets/images/my images/my-portfolio-about-img.jpeg";
-import ImageParallax from "../../components/img parallax/ImageParallax";
 
 const About = () => {
     let dispatch = useDispatch();
 
     let aboutPageInteractionRef = useRef();
-    let [hasImgLoaded, setHasImgLoaded] = useState(false);
     let bgColorArr = [
         "#205eb4",
         "#903076",
@@ -85,10 +82,6 @@ const About = () => {
     }, []);
 
     useEffect(() => {
-        if (!hasImgLoaded) {
-            return;
-        }
-
         // why to go for me . line-animations
         gsap.to(
             ".main-about-page-container__reasons-container__reasons-cards-container__card .line",
@@ -138,9 +131,7 @@ const About = () => {
                     stagger: 0.2,
                 });
         });
-
-        return () => {};
-    }, [hasImgLoaded]);
+    }, []);
 
     return (
         <div className="main-about-page-container route-transition-container">
@@ -177,11 +168,7 @@ const About = () => {
                     </span>
                 </div>
                 <div className="main-about-page-container__main-about-section__img-container">
-                    <ImageParallax
-                        img={myAboutImg}
-                        setHasImgLoaded={setHasImgLoaded}
-                        strength={5}
-                    />
+                    <img src={myAboutImg} />
                 </div>
             </div>
 
@@ -305,7 +292,7 @@ const About = () => {
                 </div>
             </div>
 
-            {hasImgLoaded && <Contact />}
+            <Contact />
         </div>
     );
 };

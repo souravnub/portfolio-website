@@ -7,8 +7,8 @@ import "./contact.scss";
 import AnimatedTopCurve from "../../components/AnimatedTopCurve";
 import myImg from "../../assets/images/my images/img-small.jpg";
 const Contact = () => {
-    let phone = "+91 7710346567";
-    let email = "s6hr6h4u3@gmail.com";
+    let phone = process.env.REACT_APP_PHONE;
+    let email = process.env.REACT_APP_EMAIL;
     let [isEmailCopied, setIsEmailCopied] = useState(false);
     let [isPhoneCopied, setIsPhoneCopied] = useState(false);
 

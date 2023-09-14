@@ -176,7 +176,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                         <span>Email</span>
-                        <span>s6hr6h4u3@gmail.com</span>
+                        <span>{process.env.REACT_APP_EMAIL}</span>
                     </div>
                 </div>
 
