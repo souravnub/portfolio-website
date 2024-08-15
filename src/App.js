@@ -50,14 +50,16 @@ function App() {
     }, []);
 
     useEffect(() => {
-        let pathname = location.pathname.split("/").at(-1);
+        let pathname = location.pathname.split("/");
+        const lastPath = pathname.at(-1);
         dispatch(setPageTransitionOverlay(true));
 
-        if (pathname === "") {
+        dispatch(setPageTransitionOverlayText(lastPath));
+        // overlay text for each project is handled in singleWorkPage
+        if (lastPath === "") {
             dispatch(setPageTransitionOverlayText("home"));
             return;
         }
-        dispatch(setPageTransitionOverlayText(pathname));
     }, [location]);
 
     return (
@@ -72,7 +74,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/work" element={<WorkPage />} />
 
-                <Route path="/work/:work" element={<SingleWorkPage />} />
+                <Route path="/work/:projectId" element={<SingleWorkPage />} />
 
                 <Route path="/contact" element={<ContactPage />} />
             </Routes>

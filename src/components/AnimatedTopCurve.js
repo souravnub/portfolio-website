@@ -2,7 +2,7 @@ import gsap from "gsap";
 import React, { useEffect } from "react";
 import "../sass/_components.scss";
 
-const AnimatedTopCurve = ({ nextWorkIndex }) => {
+const AnimatedTopCurve = ({ nextProjectId }) => {
     useEffect(() => {
         // scroll trigger for the rounded-div-container's height(as when its height will vary the borderradius of the curve will seem to change)
         let transition = gsap.fromTo(
@@ -23,7 +23,7 @@ const AnimatedTopCurve = ({ nextWorkIndex }) => {
         return () => {
             transition.revert();
         };
-    }, [nextWorkIndex]);
+    }, [nextProjectId]);
 
     return (
         <div className="rounded-div-container">

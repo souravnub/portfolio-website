@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import gsap from "gsap";
 
 const SectionBelowHeader = ({
-    liveSiteLink,
+    productionLink,
     brandImg,
     brandNameImg,
     githubLink,
@@ -49,10 +49,10 @@ const SectionBelowHeader = ({
                 className="single-work-info-live-link-section__img-container__brand-name-img"
             />
 
-            {liveSiteLink && (
+            {productionLink && (
                 <a
                     ref={liveLinkRef}
-                    href={liveSiteLink}
+                    href={productionLink}
                     target="_blank"
                     rel="noreferrer"
                     className="single-work-info-live-link-section__link">

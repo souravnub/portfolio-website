@@ -50,15 +50,15 @@ const GridWorkDisplay = ({ dataArr }) => {
                                 to={`/work/${work.inSiteLinkText}`}
                                 key={work.id}>
                                 <div className="grid-work-section__cards-container__card__img-container">
-                                    <img src={work.img} alt={work.heading} />
+                                    <img src={work.image} alt={work.name} />
                                 </div>
                                 <div className="grid-work-section__cards-container__card__card-info-container">
                                     <span className="grid-work-section__cards-container__card__card-info-container__main-heading">
-                                        {work.heading}
+                                        {work.name}
                                     </span>
                                     <span className="grid-work-section__cards-container__card__card-info-container__line"></span>
                                     <div className="grid-work-section__cards-container__card__card-info-container__info">
-                                        <span>{work.info}</span>
+                                        <span>{work.role}</span>
                                         <span>{work.yearOfProduction}</span>
                                     </div>
                                 </div>

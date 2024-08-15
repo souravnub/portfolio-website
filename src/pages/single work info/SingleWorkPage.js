@@ -1,26 +1,31 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux/es/exports";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { setNavTextColor } from "../../features/navigation/navSlice";
-import { useRef } from "react";
-import "./singleWorkPage.scss";
-import { allWorks } from "../../data/works";
-import SingleWorkInfoHeader from "../../components/singleWorkInfoComponents/header/SingleWorkInfoHeader";
-import SectionBelowHeader from "../../components/singleWorkInfoComponents/section below header/SectionBelowHeader";
-import DesktopMockupSection from "../../components/singleWorkInfoComponents/desktop mockup section/DesktopMockupSection";
-import MobileMockupSection from "../../components/singleWorkInfoComponents/mobiles mockup section/MobileMockupSection";
+import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux/es/exports";
+import { useParams } from "react-router-dom";
 import TabletMockup from "../../components/mockups/tablet/TabletMockup";
+import DesktopMockupSection from "../../components/singleWorkInfoComponents/desktop mockup section/DesktopMockupSection";
 import SingleWorkSectionFooter from "../../components/singleWorkInfoComponents/footer/SingleWorkSectionFooter";
+import SingleWorkInfoHeader from "../../components/singleWorkInfoComponents/header/SingleWorkInfoHeader";
+import MobileMockupSection from "../../components/singleWorkInfoComponents/mobiles mockup section/MobileMockupSection";
 import ProjectLearningsSection from "../../components/singleWorkInfoComponents/project learnings section/ProjectLearningsSection";
+import SectionBelowHeader from "../../components/singleWorkInfoComponents/section below header/SectionBelowHeader";
+import { setNavTextColor } from "../../features/navigation/navSlice";
+import { setPageTransitionOverlayText } from "../../features/page transition overlay/PageTransitionOverlaySlice";
+import useProject from "../../hooks/useProject";
+import "./singleWorkPage.scss";
 
 const SingleWorkPage = () => {
-    let { work: currentLink } = useParams();
+    let { projectId } = useParams();
+    const { data, isLoading } = useProject(projectId);
 
     let dispatch = useDispatch();
     let mainWorkPageContainerRef = useRef();
 
     useEffect(() => {
+        if (!data?.project) return;
+
+        dispatch(setPageTransitionOverlayText(data.project.name));
+
         const container = mainWorkPageContainerRef.current;
 
         const resize_ob = new ResizeObserver(function () {
@@ -32,81 +37,94 @@ const SingleWorkPage = () => {
         return () => {
             resize_ob.unobserve(container);
         };
-    }, []);
-
-    let {
-        id,
-        heading,
-        info,
-        yearOfProduction,
-        link,
-        github,
-        video,
-        brandImg,
-        brandNameImg,
-        mobileImg1,
-        mobileImg2,
-        mobileVideo,
-        tabletVideo,
-        tabletImg,
-        techUsed,
-        description,
-        skillsEnhanced,
-        learning,
-    } = allWorks.find((work) => work.inSiteLinkText === currentLink);
+    }, [data]);
 
     useEffect(() => {
+        if (!data?.project) return;
         dispatch(setNavTextColor("black"));
 
         mainWorkPageContainerRef.current.style.paddingTop =
             document.querySelector(".top-navigation").getBoundingClientRect()
                 .height + "px";
-    }, []);
+    }, [data]);
+
+    if (isLoading) {
+        return <div></div>;
+    }
+
+    let {
+        name,
+        role,
+        yearOfProduction,
+        productionLink,
+        githubLink,
+        videoUrl,
+        brandImageUrl,
+        brandNameImageUrl,
+        mobileImageUrl1,
+        mobileImageUrl2,
+        mobileVideoUrl,
+        tabletVideoUrl,
+        tabletImageUrl,
+        techUsed,
+        description,
+        skillsEnhanced,
+        quote,
+    } = data.project;
 
     return (
         <div
             ref={mainWorkPageContainerRef}
             className="route-transition-container">
             <SingleWorkInfoHeader
-                siteName={heading}
-                servicesInfo={info}
+                siteName={name}
+                servicesInfo={role}
                 yearOfProduction={yearOfProduction}
                 techUsed={techUsed}
                 description={description}
             />
             <SectionBelowHeader
-                brandImg={brandImg}
-                liveSiteLink={link}
-                githubLink={github}
-                brandNameImg={brandNameImg}
+                brandImg={brandImageUrl}
+                productionLink={productionLink}
+                githubLink={githubLink}
+                brandNameImg={brandNameImageUrl}
             />
-            {video && (
-                <DesktopMockupSection data={{ type: "video", source: video }} />
+            {videoUrl && (
+                <DesktopMockupSection
+                    data={{ type: "video", source: videoUrl }}
+                />
             )}
-            {(mobileImg1 || mobileImg2 || mobileVideo) && (
+            {(mobileImageUrl1 || mobileImageUrl2 || mobileVideoUrl) && (
                 <MobileMockupSection
-                    data={{ mobileImg1, mobileImg2, mobileVideo }}
+                    data={{
+                        mobileImg1: mobileImageUrl1,
+                        mobileImg2: mobileImageUrl2,
+                        mobileVideo: mobileVideoUrl,
+                    }}
                 />
             )}
-            {tabletVideo && (
+            {tabletVideoUrl && (
                 <TabletMockup
-                    asset={{ type: "video", source: tabletVideo }}
-                    showBg={(mobileImg1 || mobileImg2 || mobileVideo) && true}
+                    asset={{ type: "video", source: tabletVideoUrl }}
+                    showBg={
+                        (mobileImageUrl1 ||
+                            mobileImageUrl2 ||
+                            mobileVideoUrl) &&
+                        true
+                    }
                 />
             )}
-            {tabletImg && (
-                <TabletMockup asset={{ type: "img", source: tabletImg }} />
+            {tabletImageUrl && (
+                <TabletMockup asset={{ type: "img", source: tabletImageUrl }} />
             )}
             {skillsEnhanced && (
                 <ProjectLearningsSection
                     skillsEnhancedArr={skillsEnhanced}
-                    websiteName={heading}
-                    learning={learning}
+                    websiteName={name}
+                    quote={quote}
                 />
             )}
-            <SingleWorkSectionFooter
-                nextWorkIndex={id + 1 > allWorks.length ? 1 : id + 1}
-            />
+            <SingleWorkSectionFooter nextProjectId={data.nextProjectId} />
         </div>
     );
 };

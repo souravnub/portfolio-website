@@ -1,16 +1,14 @@
 import gsap from "gsap";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { allWorks } from "../../../data/works";
 import AnimatedTopCurve from "../../AnimatedTopCurve";
 import "./singleWorkSectionFooter.scss";
+import useProject from "../../../hooks/useProject";
 
-const SingleWorkSectionFooter = ({ nextWorkIndex }) => {
-    let { heading, img, inSiteLinkText } = allWorks.find(
-        (work) => work.id === nextWorkIndex
-    );
+const SingleWorkSectionFooter = ({ nextProjectId }) => {
+    let { data } = useProject(nextProjectId);
 
     let hoverBtnRef = useRef();
     let footerContainerRef = useRef();
@@ -100,7 +98,7 @@ const SingleWorkSectionFooter = ({ nextWorkIndex }) => {
             linkContainerTransition?.revert();
             workLinkTransition?.revert();
         };
-    }, [nextWorkIndex]);
+    }, [nextProjectId]);
 
     return (
         <>
@@ -110,17 +108,17 @@ const SingleWorkSectionFooter = ({ nextWorkIndex }) => {
                 next Project
             </div>
             <div className="single-work-section-main-container">
-                <AnimatedTopCurve nextWorkIndex={nextWorkIndex} />
+                <AnimatedTopCurve nextProjectId={nextProjectId} />
                 <div className="single-work-section-footer">
                     <Link
-                        to={`/work/${inSiteLinkText}`}
+                        to={`/work/${nextProjectId}`}
                         ref={footerContainerRef}
                         className="single-work-section-footer__link-container">
                         <span>next Project</span>
                         <span className="single-work-section-footer__link-container__work-heading">
-                            {heading}
+                            {data?.project.name}
                         </span>
-                        <img src={img} alt="" />
+                        <img src={data?.project.image} alt="" />
                     </Link>
                     <Link
                         ref={allWorksLiknRef}

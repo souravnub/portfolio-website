@@ -24,43 +24,56 @@ const WorkPage = () => {
 
     let { windowWidth } = useSelector((store) => store.windowDimmensions);
     let { deviceType } = useSelector((store) => store.deviceType);
+    const [projects, setProjects] = useState([]);
+
+    async function fetchProjects() {
+        const res = await fetch(
+            `${process.env.REACT_APP_API_URL}/api/projects`
+        );
+        const json = await res.json();
+        setProjects(json.projects);
+    }
 
     useEffect(() => {
+        fetchProjects();
         dispatch(setNavTextColor("black"));
 
         let navHeight = document
             .querySelector(".top-navigation")
             .getBoundingClientRect().height;
-        document.querySelector(".main-works-page").style.paddingTop =
-            navHeight + "px";
+
+        const page = document.querySelector(".main-works-page");
+        page.style.paddingTop = navHeight + "px";
 
         let allShapes = document.querySelectorAll(
             ".main-works-page .main-heading .main-heading__heading-content .icon"
         );
-        gsap.to(allShapes, {
-            rotation: "80deg",
-            scale: 1.3,
 
-            scrollTrigger: {
-                trigger: ".main-heading__heading-content",
-                scrub: 1,
-                start: "-80% 0%",
-                end: "140% 0%",
-            },
-        });
+        if (allShapes.length > 0) {
+            gsap.to(allShapes, {
+                rotation: "80deg",
+                scale: 1.3,
 
-        let headingTimeline = gsap.timeline();
-        headingTimeline
-            .to(".heading-text", {
-                y: 0,
-
-                duration: 1,
-                ease: "power3",
-            })
-            .to(allShapes, {
-                opacity: 0.05,
-                duration: 1,
+                scrollTrigger: {
+                    trigger: ".main-heading__heading-content",
+                    scrub: 1,
+                    start: "-80% 0%",
+                    end: "140% 0%",
+                },
             });
+            let headingTimeline = gsap.timeline();
+            headingTimeline
+                .to(".heading-text", {
+                    y: 0,
+
+                    duration: 1,
+                    ease: "power3",
+                })
+                .to(allShapes, {
+                    opacity: 0.05,
+                    duration: 1,
+                });
+        }
     }, []);
 
     useEffect(() => {
@@ -88,6 +101,7 @@ const WorkPage = () => {
             let mainTableContainer = document.querySelector(
                 ".main-works-page__content-table tbody"
             );
+
             mainTableContainer.addEventListener("mouseover", () => {
                 absoluteContainer.style.transform =
                     "scale(1)  translate(-50%, -50%)";
@@ -130,12 +144,12 @@ const WorkPage = () => {
             <span className="main-absolute-work-btn">view</span>
             {deviceType === "desktop" && windowWidth > 560 && (
                 <div className="main-absolute-work-container">
-                    {allWorks.map(({ img, brandingColor }) => (
+                    {projects.map(({ image, brandColor }) => (
                         <div
-                            key={img}
+                            key={image}
                             className="main-absolute-work-container__img-container"
-                            style={{ backgroundColor: brandingColor }}>
-                            <img src={img} alt="work illustration" />
+                            style={{ backgroundColor: brandColor }}>
+                            <img src={image} alt="work illustration" />
                         </div>
                     ))}
                 </div>
@@ -165,12 +179,12 @@ const WorkPage = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {allWorks.map(
+                            {projects.map(
                                 (
                                     {
                                         id,
-                                        heading,
-                                        info,
+                                        name,
+                                        role,
                                         yearOfProduction,
                                         inSiteLinkText,
                                     },
@@ -180,13 +194,11 @@ const WorkPage = () => {
                                         <tr
                                             tabIndex="0"
                                             role="link"
-                                            data-href={`/work/${inSiteLinkText}`}
+                                            data-href={`/work/${id}`}
                                             className="main-works-page__content-table__card"
                                             key={id}
                                             onClick={() =>
-                                                navigate(
-                                                    `/work/${inSiteLinkText}`
-                                                )
+                                                navigate(`/work/${id}`)
                                             }
                                             onFocus={() => {
                                                 handleFocusClick(
@@ -198,9 +210,9 @@ const WorkPage = () => {
                                                 setCurrentHoveredWork(idx);
                                             }}>
                                             <td className="work-heading">
-                                                {heading}
+                                                {name}
                                             </td>
-                                            <td>{info}</td>
+                                            <td>{role}</td>
                                             <td>{yearOfProduction}</td>
                                         </tr>
                                     );
@@ -209,7 +221,7 @@ const WorkPage = () => {
                         </tbody>
                     </table>
                 ) : (
-                    <GridWorkDisplay dataArr={allWorks} />
+                    <GridWorkDisplay dataArr={projects} />
                 )}
             </div>
 
