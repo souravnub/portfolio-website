@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { useParams } from "react-router-dom";
 import TabletMockup from "../../components/mockups/tablet/TabletMockup";
-import DesktopMockupSection from "../../components/singleWorkInfoComponents/desktop mockup section/DesktopMockupSection";
 import SingleWorkSectionFooter from "../../components/singleWorkInfoComponents/footer/SingleWorkSectionFooter";
 import SingleWorkInfoHeader from "../../components/singleWorkInfoComponents/header/SingleWorkInfoHeader";
 import MobileMockupSection from "../../components/singleWorkInfoComponents/mobiles mockup section/MobileMockupSection";
@@ -13,6 +12,7 @@ import { setNavTextColor } from "../../features/navigation/navSlice";
 import { setPageTransitionOverlayText } from "../../features/page transition overlay/PageTransitionOverlaySlice";
 import useProject from "../../hooks/useProject";
 import "./singleWorkPage.scss";
+import DesktopMockup from "../../components/singleWorkInfoComponents/desktop mockup/DesktopMockup";
 
 const SingleWorkPage = () => {
     let { projectId } = useParams();
@@ -90,9 +90,7 @@ const SingleWorkPage = () => {
                 brandNameImg={brandNameImageUrl}
             />
             {videoUrl && (
-                <DesktopMockupSection
-                    data={{ type: "video", source: videoUrl }}
-                />
+                <DesktopMockup data={{ type: "video", source: videoUrl }} />
             )}
             {(mobileImageUrl1 || mobileImageUrl2 || mobileVideoUrl) && (
                 <MobileMockupSection

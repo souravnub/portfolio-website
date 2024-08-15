@@ -1,0 +1,12 @@
+@use "../../../sass/base" as *;
+
+.desktop-mockup {
+    background-color: #f2f2f2;
+
+    &__design-asset {
+        width: min(95%, 45rem);
+        margin-inline: auto;
+        display: block;
+        height: auto;
+    }
+}
