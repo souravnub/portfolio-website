@@ -3,10 +3,12 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import GridWorkDisplay from "../../components/grid work display/GridWorkDisplay";
-import { allWorks } from "../../data/works";
 import "./recentWork.scss";
+import useProjects from "../../hooks/useProjects";
 
 const RecentWorkSection = () => {
+    const { data, isLoading } = useProjects();
+
     const { windowWidth } = useSelector((store) => store.windowDimmensions);
     useEffect(() => {
         let styledLinkTimeline = gsap.timeline({
@@ -41,7 +43,7 @@ const RecentWorkSection = () => {
     return (
         <section className="width-container">
             <span className="recent-work-section-heading">recent work</span>
-            <GridWorkDisplay dataArr={allWorks.slice(0, 4)} />
+            {!isLoading && <GridWorkDisplay dataArr={data?.projects} />}
             <Link to="/work" className="styled-link">
                 <span>more work</span>
                 <span className="styled-link__dot"></span>

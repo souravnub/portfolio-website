@@ -14,6 +14,7 @@ import GridWorkDisplay from "../../components/grid work display/GridWorkDisplay"
 import gsap from "gsap";
 import Contact from "../../sections/contact/Contact";
 import "./workPage.scss";
+import useProjects from "../../hooks/useProjects";
 
 // make a component for three mobile mockups (with animations)... one component for tab and laptop mockup , one component for the services,location,yearOfProduction information
 
@@ -21,21 +22,12 @@ const WorkPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     let [currentHoveredWork, setCurrentHoveredWork] = useState(null);
+    const { data, isLoading } = useProjects();
 
     let { windowWidth } = useSelector((store) => store.windowDimmensions);
     let { deviceType } = useSelector((store) => store.deviceType);
-    const [projects, setProjects] = useState([]);
-
-    async function fetchProjects() {
-        const res = await fetch(
-            `${process.env.REACT_APP_API_URL}/api/projects`
-        );
-        const json = await res.json();
-        setProjects(json.projects);
-    }
 
     useEffect(() => {
-        fetchProjects();
         dispatch(setNavTextColor("black"));
 
         let navHeight = document
@@ -144,14 +136,15 @@ const WorkPage = () => {
             <span className="main-absolute-work-btn">view</span>
             {deviceType === "desktop" && windowWidth > 560 && (
                 <div className="main-absolute-work-container">
-                    {projects.map(({ image, brandColor }) => (
-                        <div
-                            key={image}
-                            className="main-absolute-work-container__img-container"
-                            style={{ backgroundColor: brandColor }}>
-                            <img src={image} alt="work illustration" />
-                        </div>
-                    ))}
+                    {!isLoading &&
+                        data.projects.map(({ image, brandColor }) => (
+                            <div
+                                key={image}
+                                className="main-absolute-work-container__img-container"
+                                style={{ backgroundColor: brandColor }}>
+                                <img src={image} alt="work illustration" />
+                            </div>
+                        ))}
                 </div>
             )}
             <div className="main-works-page width-container">
@@ -179,49 +172,50 @@ const WorkPage = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {projects.map(
-                                (
-                                    {
-                                        id,
-                                        name,
-                                        role,
-                                        yearOfProduction,
-                                        inSiteLinkText,
-                                    },
-                                    idx
-                                ) => {
-                                    return (
-                                        <tr
-                                            tabIndex="0"
-                                            role="link"
-                                            data-href={`/work/${id}`}
-                                            className="main-works-page__content-table__card"
-                                            key={id}
-                                            onClick={() =>
-                                                navigate(`/work/${id}`)
-                                            }
-                                            onFocus={() => {
-                                                handleFocusClick(
-                                                    idx,
-                                                    inSiteLinkText
-                                                );
-                                            }}
-                                            onMouseOver={() => {
-                                                setCurrentHoveredWork(idx);
-                                            }}>
-                                            <td className="work-heading">
-                                                {name}
-                                            </td>
-                                            <td>{role}</td>
-                                            <td>{yearOfProduction}</td>
-                                        </tr>
-                                    );
-                                }
-                            )}
+                            {!isLoading &&
+                                data.projects.map(
+                                    (
+                                        {
+                                            id,
+                                            name,
+                                            role,
+                                            yearOfProduction,
+                                            inSiteLinkText,
+                                        },
+                                        idx
+                                    ) => {
+                                        return (
+                                            <tr
+                                                tabIndex="0"
+                                                role="link"
+                                                data-href={`/work/${id}`}
+                                                className="main-works-page__content-table__card"
+                                                key={id}
+                                                onClick={() =>
+                                                    navigate(`/work/${id}`)
+                                                }
+                                                onFocus={() => {
+                                                    handleFocusClick(
+                                                        idx,
+                                                        inSiteLinkText
+                                                    );
+                                                }}
+                                                onMouseOver={() => {
+                                                    setCurrentHoveredWork(idx);
+                                                }}>
+                                                <td className="work-heading">
+                                                    {name}
+                                                </td>
+                                                <td>{role}</td>
+                                                <td>{yearOfProduction}</td>
+                                            </tr>
+                                        );
+                                    }
+                                )}
                         </tbody>
                     </table>
                 ) : (
-                    <GridWorkDisplay dataArr={projects} />
+                    !isLoading && <GridWorkDisplay dataArr={data.projects} />
                 )}
             </div>
 
