@@ -7,7 +7,7 @@ import "./recentWork.scss";
 import useProjects from "../../hooks/useProjects";
 
 const RecentWorkSection = () => {
-    const { data, isLoading } = useProjects();
+    const { data, isLoading } = useProjects({ count: 4 });
 
     const { windowWidth } = useSelector((store) => store.windowDimmensions);
     useEffect(() => {
