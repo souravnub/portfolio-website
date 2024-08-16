@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../api/axiosClient";
 
-export async function fetchProjects() {
+export async function fetchProjects(count) {
     const res = await axiosClient.get(
-        `${process.env.REACT_APP_API_URL}/api/projects?count=4`
+        count
+            ? `${process.env.REACT_APP_API_URL}/api/projects?count=${count}`
+            : `${process.env.REACT_APP_API_URL}/api/projects`
     );
     return res.data;
 }

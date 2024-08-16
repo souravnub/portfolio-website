@@ -121,14 +121,19 @@ const WorkPage = () => {
         }
     }, [currentHoveredWork, windowWidth]);
 
-    function handleFocusClick(idx, inSiteLink) {
+    function handleFocusClick(idx, id) {
         setCurrentHoveredWork(idx);
-        window.addEventListener("keydown", (e) => {
+        function onClick(e) {
+            if (e.repeat) return;
             let key = e.key.toLowerCase();
             if (key === "enter" || key === " ") {
-                navigate(`/work/${inSiteLink}`);
+                navigate(`/work/${id}`);
+                console.log("hereasfdsaf");
             }
-        });
+            // after navigation remove event listener
+            window.removeEventListener("keydown", onClick);
+        }
+        window.addEventListener("keydown", onClick);
     }
 
     return (
@@ -161,7 +166,6 @@ const WorkPage = () => {
                         </div>
                     </div>
                 </div>
-
                 {deviceType === "desktop" && windowWidth > 560 ? (
                     <table className="main-works-page__content-table">
                         <thead>
@@ -175,13 +179,7 @@ const WorkPage = () => {
                             {!isLoading &&
                                 data.projects.map(
                                     (
-                                        {
-                                            id,
-                                            name,
-                                            role,
-                                            yearOfProduction,
-                                            inSiteLinkText,
-                                        },
+                                        { id, name, role, yearOfProduction },
                                         idx
                                     ) => {
                                         return (
@@ -195,10 +193,7 @@ const WorkPage = () => {
                                                     navigate(`/work/${id}`)
                                                 }
                                                 onFocus={() => {
-                                                    handleFocusClick(
-                                                        idx,
-                                                        inSiteLinkText
-                                                    );
+                                                    handleFocusClick(idx, id);
                                                 }}
                                                 onMouseOver={() => {
                                                     setCurrentHoveredWork(idx);

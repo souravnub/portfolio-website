@@ -47,7 +47,7 @@ const GridWorkDisplay = ({ dataArr }) => {
                         return (
                             <Link
                                 className="grid-work-section__cards-container__card"
-                                to={`/work/${work.inSiteLinkText}`}
+                                to={`/work/${work.id}`}
                                 key={work.id}>
                                 <div className="grid-work-section__cards-container__card__img-container">
                                     <img src={work.image} alt={work.name} />
