@@ -10,13 +10,13 @@ export async function fetchProjects({ count }) {
     return res.data;
 }
 
-const useProjects = ({ count }) => {
+const useProjects = (props) => {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     async function getProjectsData() {
         setIsLoading(true);
-        const data = await fetchProjects({ count });
+        const data = await fetchProjects({ count: props?.count });
         setIsLoading(false);
         setData(data);
     }
