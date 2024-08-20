@@ -21,6 +21,7 @@
         "react-scripts": "5.0.1",
         "react-spinners": "^0.13.3",
         "sass": "^1.52.3",
+        "tailwindcss-animate": "^1.0.7",
         "tinycolor2": "^1.4.2",
         "web-vitals": "^2.1.4",
         "zod": "^3.23.8"
