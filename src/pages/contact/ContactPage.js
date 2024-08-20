@@ -1,45 +1,32 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import StyledBtn from "../../components/extras/StyledBtn";
-import { FaPaperPlane } from "react-icons/fa";
-import { BsCheck2Circle } from "react-icons/bs";
-import { MdOutlineErrorOutline } from "react-icons/md";
-import { ClockLoader } from "react-spinners";
-import Input from "../../components/form/Input";
-import TextArea from "../../components/form/TextArea";
-import { setNavTextColor } from "../../features/navigation/navSlice";
-import "./contactPage.scss";
-import axiosClient from "../../api/axiosClient";
+import { zodResolver } from "@hookform/resolvers/zod";
 import gsap from "gsap";
+import React, { useEffect, useRef, useState } from "react";
+import ReactConfetti from "react-confetti";
+import { useForm } from "react-hook-form";
+import { BsCheck2Circle } from "react-icons/bs";
+import { FaPaperPlane } from "react-icons/fa";
+import { MdOutlineErrorOutline } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { ClockLoader } from "react-spinners";
+import StyledBtn from "../../components/extras/StyledBtn";
+import { setNavTextColor } from "../../features/navigation/navSlice";
+import { contactSchema } from "../../utils/schemas";
+import "./contactPage.scss";
 
 const ContactPage = () => {
     let dispatch = useDispatch();
 
     let mainContactPageRef = useRef();
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-
-    const [isLoading, setIsLoading] = useState(false);
-
     const [success, setSuccess] = useState({
-        success: undefined,
+        success: null,
         message: null,
     });
-    // checking if there is error except email, name or message validation
-    const [error, setError] = useState({ isError: undefined, error: null });
-    const [isNameValid, setIsNameValid] = useState({
-        valid: true,
-        message: "",
-    });
-    const [isEmailValid, setIsEmailValid] = useState({
-        valid: true,
-        message: "",
-    });
-    const [isMessageValid, setIsMessageValid] = useState({
-        valid: true,
-        message: "",
-    });
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+    } = useForm({ resolver: zodResolver(contactSchema) });
 
     useEffect(() => {
         dispatch(setNavTextColor("black"));
@@ -50,111 +37,80 @@ const ContactPage = () => {
     }, []);
 
     useEffect(() => {
-        let timeout;
-        if (success.message || error.error) {
-            gsap.fromTo(
-                ".main-error-container",
-                {
-                    y: "-10rem",
-                    opacity: 0,
-                },
-                {
-                    y: 0,
-                    opacity: 1,
-                    ease: "expo.inOut",
-                }
-            );
-            timeout = setTimeout(() => {
-                gsap.to(".main-error-container", {
-                    y: "-10rem",
-                    opacity: 0,
-                });
-            }, 4000);
-        }
-
-        return () => {
-            clearTimeout(timeout);
-        };
-    }, [success, error]);
-
-    useEffect(() => {
-        if (isLoading) {
+        if (isSubmitting) {
             document.body.style.overflow = "hidden";
             gsap.to(".loading-page-transition-overlay", {
                 y: 0,
                 ease: "expo.inOut",
             });
         } else {
-            document.body.style.overflow = "auto";
-            gsap.to(".loading-page-transition-overlay", {
-                y: "-100%",
-                ease: "expo.inOut",
-            });
-        }
-    }, [isLoading, error.isError]);
-
-    let handleFormSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            setIsLoading(true);
-            let res = await axiosClient.post("/contact", {
-                name,
-                email,
-                message,
-            });
-            setIsLoading(false);
-
-            if (res.data.success) {
-                let { success, message } = res.data;
-                setSuccess({ success, message });
-            }
-        } catch (err) {
-            setIsLoading(false);
-            //checking if the error is somewhere in the validation
-            if (err.response && err.response.data.success === false) {
-                err.response.data.errors.forEach((err) => {
-                    let { location, message } = err;
-
-                    if (location === "name") {
-                        setIsNameValid({ valid: false, message });
-                    }
-                    if (location === "email") {
-                        setIsEmailValid({ valid: false, message });
-                    }
-                    if (location === "message") {
-                        setIsMessageValid({ valid: false, message });
-                    }
+            function removeOverlay() {
+                document.body.style.overflow = "auto";
+                gsap.to(".loading-page-transition-overlay", {
+                    y: "-100%",
+                    ease: "expo.inOut",
                 });
-
-                return;
             }
-            setSuccess({ isSuccess: undefined, message: null });
-            setError({ isError: true, error: err.message });
+
+            if (success.success !== null) {
+                const id = setTimeout(() => {
+                    removeOverlay();
+                    clearTimeout(id);
+                }, 3000);
+            } else {
+                removeOverlay();
+            }
         }
+    }, [isSubmitting, success.success]);
+
+    let handleFormSubmit = async (data) => {
+        setSuccess({ success: null, message: null });
+
+        const res = await fetch(
+            `${process.env.REACT_APP_API_URL}/api/contact`,
+            {
+                method: "post",
+                body: JSON.stringify({ ...data }),
+            }
+        );
+        const dataRes = await res.json();
+        setSuccess({ ...dataRes });
     };
 
     return (
         <div className="route-transition-container">
             <div className="loading-page-transition-overlay">
                 <div>
-                    <ClockLoader color="white" size={70} />
-                    <span>Let me bring a cup of coffee...</span>
+                    {isSubmitting && (
+                        <>
+                            <ClockLoader color="white" size={70} />
+                            <span>Let me bring a cup of coffee...</span>
+                        </>
+                    )}
+
+                    {success.success !== null && (
+                        <div data-type={success.success ? "success" : "error"}>
+                            {success.success ? (
+                                <>
+                                    <ReactConfetti
+                                        numberOfPieces={300}
+                                        tweenDuration={3000}
+                                        recycle={false}
+                                    />
+                                    <div className="flex items-center bg-green-700  p-5 rounded-sm text-lg  gap-3">
+                                        <BsCheck2Circle className="text-2xl" />{" "}
+                                        {success.message}
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="flex items-center bg-red-600  p-5 rounded-sm text-lg  gap-3">
+                                    <MdOutlineErrorOutline className="text-2xl" />
+                                    {success?.message} . Please try again.
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
-            </div>
-            <div
-                className="main-error-container"
-                data-type={success.success ? "success" : "error"}>
-                {success.success ? (
-                    <div>
-                        <BsCheck2Circle className="icon" /> {success.message}
-                    </div>
-                ) : (
-                    <div>
-                        <MdOutlineErrorOutline className="icon" />
-                        {error.error}. Please try again.
-                    </div>
-                )}
             </div>
             <div
                 className="main-contact-page-container"
@@ -182,43 +138,59 @@ const ContactPage = () => {
 
                 <form
                     className="main-contact-page-container__col"
-                    onSubmit={handleFormSubmit}>
-                    <Input
-                        type="text"
-                        id="name"
-                        labelText="name"
-                        value={name}
-                        onChange={(e) => {
-                            setName(e.target.value);
-                            setIsNameValid({ valid: true, message: "" });
-                        }}
-                        error={isNameValid}
-                    />
-                    <Input
-                        type="email"
-                        id="email"
-                        labelText="email"
-                        value={email}
-                        onChange={(e) => {
-                            setEmail(e.target.value);
-                            setIsEmailValid({ valid: true, message: "" });
-                        }}
-                        error={isEmailValid}
-                    />
-                    <TextArea
-                        cols="30"
-                        rows="7"
-                        id="message"
-                        labelText="message"
-                        value={message}
-                        onChange={(e) => {
-                            setMessage(e.target.value);
-                            setIsMessageValid({ valid: true, message: "" });
-                        }}
-                        error={isMessageValid}></TextArea>
+                    onSubmit={handleSubmit(handleFormSubmit)}>
+                    <div className="space-y-4">
+                        <div>
+                            <label
+                                className="block text-sm mb-1  text-neutral-900"
+                                for="name">
+                                Name
+                            </label>
+                            <input
+                                id="name"
+                                {...register("name")}
+                                className="bg-neutral-100 rounded-sm px-3 py-2 text-sm w-full"
+                            />
+                            <p className="text-sm text-red-500 mt-1">
+                                {errors.name?.message}
+                            </p>
+                        </div>
+                        <div>
+                            <label
+                                className="block text-sm mb-1  text-neutral-900"
+                                for="email">
+                                Email
+                            </label>
+                            <input
+                                id="email"
+                                {...register("email")}
+                                className="bg-neutral-100 rounded-sm px-3 py-2 text-sm w-full"
+                            />
+                            <p className="text-sm text-red-500 mt-1">
+                                {errors.email?.message}
+                            </p>
+                        </div>
+
+                        <div>
+                            <label
+                                className="block text-sm mb-1  text-neutral-900"
+                                for="message">
+                                Message
+                            </label>
+                            <textarea
+                                {...register("message")}
+                                rows={5}
+                                id="message"
+                                className="resize-none bg-neutral-100 rounded-sm px-3 py-2 text-sm w-full"
+                            />
+                            <p className="text-sm text-red-500 mt-1">
+                                {errors.message?.message}
+                            </p>
+                        </div>
+                    </div>
 
                     <div className="styled-btn-container">
-                        <button type="submit">
+                        <button type="submit" disabled={isSubmitting}>
                             <StyledBtn
                                 text={
                                     <span

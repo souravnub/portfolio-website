@@ -23,38 +23,6 @@
         }
     }
 }
-.main-error-container {
-    position: fixed;
-    top: 2rem;
-
-    width: max-content;
-
-    left: 50%;
-    transform: translateX(-50%) translateY(-10rem);
-    z-index: 999999;
-    color: white;
-
-    padding: $padding-sm $padding-lg;
-    border-radius: 0.3em;
-
-    box-shadow: rgba(0, 0, 0, 0.29) 0px 4px 12px;
-
-    & > div {
-        display: flex;
-        gap: $gap-sm;
-        align-items: center;
-        font-size: $fs-sm;
-
-        .icon {
-            font-size: $fs-md;
-        }
-    }
-
-    // 600px
-    @media screen and (max-width: 37.5rem) {
-        width: 90%;
-    }
-}
 .main-error-container[data-type="success"] {
     background-color: rgb(8, 140, 8);
 }
@@ -124,6 +92,7 @@
     }
 
     form {
+        // background-color: red;
         display: flex;
         flex-direction: column;
         justify-content: center;

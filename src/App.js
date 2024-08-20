@@ -24,6 +24,7 @@ import {
     setWindowWidth,
 } from "./features/windowDimensionsSlice";
 import ContactPage from "./pages/contact/ContactPage";
+import "./globals.css";
 
 function App() {
     gsap.registerPlugin(ScrollTrigger);
