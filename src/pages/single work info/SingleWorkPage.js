@@ -70,6 +70,7 @@ const SingleWorkPage = () => {
         description,
         skillsEnhanced,
         quote,
+        contributors,
     } = data.project;
 
     return (
@@ -82,6 +83,7 @@ const SingleWorkPage = () => {
                 yearOfProduction={yearOfProduction}
                 techUsed={techUsed}
                 description={description}
+                contributors={contributors}
             />
             <SectionBelowHeader
                 brandImg={brandImageUrl}
