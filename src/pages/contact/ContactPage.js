@@ -12,6 +12,7 @@ import StyledBtn from "../../components/extras/StyledBtn";
 import { setNavTextColor } from "../../features/navigation/navSlice";
 import { contactSchema } from "../../utils/schemas";
 import "./contactPage.scss";
+import Turnstile from "react-turnstile";
 
 const ContactPage = () => {
     let dispatch = useDispatch();
@@ -25,8 +26,13 @@ const ContactPage = () => {
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors, isSubmitting },
     } = useForm({ resolver: zodResolver(contactSchema) });
+
+    useEffect(() => {
+        register("captchaToken", { required: true });
+    }, []);
 
     useEffect(() => {
         dispatch(setNavTextColor("black"));
@@ -64,6 +70,8 @@ const ContactPage = () => {
     }, [isSubmitting, success.success]);
 
     let handleFormSubmit = async (data) => {
+        console.log(data);
+
         setSuccess({ success: null, message: null });
 
         const res = await fetch(
@@ -140,10 +148,11 @@ const ContactPage = () => {
                     className="main-contact-page-container__col"
                     onSubmit={handleSubmit(handleFormSubmit)}>
                     <div className="space-y-4">
+                        <input type="text" hidden {...register("token")} />
                         <div>
                             <label
                                 className="block text-sm mb-1  text-neutral-900"
-                                for="name">
+                                htmlFor="name">
                                 Name
                             </label>
                             <input
@@ -158,7 +167,7 @@ const ContactPage = () => {
                         <div>
                             <label
                                 className="block text-sm mb-1  text-neutral-900"
-                                for="email">
+                                htmlFor="email">
                                 Email
                             </label>
                             <input
@@ -174,7 +183,7 @@ const ContactPage = () => {
                         <div>
                             <label
                                 className="block text-sm mb-1  text-neutral-900"
-                                for="message">
+                                htmlFor="message">
                                 Message
                             </label>
                             <textarea
@@ -187,6 +196,14 @@ const ContactPage = () => {
                                 {errors.message?.message}
                             </p>
                         </div>
+
+                        <Turnstile
+                            theme="light"
+                            sitekey={process.env.REACT_APP_CLOUDFLARE_SITE_KEY}
+                            onVerify={(token) => {
+                                setValue("token", token);
+                            }}
+                        />
                     </div>
 
                     <div className="styled-btn-container">
