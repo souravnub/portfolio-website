@@ -28,7 +28,7 @@ const Hero = () => {
             <div className="main-hero-section__location-info">
                 <div className="main-hero-section__location-info__info-container">
                     <span>Located</span>
-                    <span>in India</span>
+                    <span>in Canada</span>
                 </div>
 
                 <BsGlobe className="main-hero-section__location-info__info-container__icon" />
