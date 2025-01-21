@@ -3,3 +3,8 @@
   to = "/index.html"
   status = 200
   force = false
+
+[[redirects]]
+  from = "/"
+  to = "https://sourav.ca"
+  force = true
